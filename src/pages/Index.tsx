@@ -74,7 +74,7 @@ const Index = () => {
                   {/* Floating Bubble 1 - Mobile */}
                   <div className="absolute top-0 left-4 z-20 animate-float-1">
                     <div className="bg-background/95 backdrop-blur-sm rounded-full px-4 py-3 shadow-2xl border-2 border-foreground/20">
-                      <p className="text-foreground font-bold text-lg whitespace-nowrap">€11M+</p>
+                      <p className="text-foreground font-bold text-lg whitespace-nowrap">11{'\u00A0'}M€</p>
                       <p className="text-foreground/80 text-xs whitespace-nowrap">{t('home.stats.transactions')}</p>
                     </div>
                   </div>
@@ -125,7 +125,7 @@ const Index = () => {
                 {/* Floating Bubble 1 - Top Left of Image */}
                 <div className="absolute top-24 left-8 lg:left-16 z-20 animate-float-1">
                   <div className="bg-background/95 backdrop-blur-sm rounded-full px-6 py-4 lg:px-8 lg:py-6 shadow-2xl border-2 border-foreground/20">
-                    <p className="text-foreground font-bold text-xl lg:text-2xl whitespace-nowrap">€11M+</p>
+                    <p className="text-foreground font-bold text-xl lg:text-2xl whitespace-nowrap">11{'\u00A0'}M€</p>
                     <p className="text-foreground/80 text-xs lg:text-sm whitespace-nowrap">{t('home.stats.transactions')}</p>
                   </div>
                 </div>

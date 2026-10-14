@@ -108,7 +108,7 @@ const translations = {
     'footer.tagline': 'Conseiller immobilier',
     'brand.subtitle': 'Immobilier',
     'home.stats.transactions': 'de transactions',
-    'home.stats.clients': 'clients satisfaits',
+    'home.stats.clients': 'clients accompagnés',
     'videos.concepts': 'Concepts immobiliers',
     'contact.getInTouch': 'Me joindre',
     'contact.followMe': 'Me suivre',
