@@ -14,7 +14,7 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-hero-dark-blue pt-28 md:pt-8 pb-0">
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-hero-dark-blue pt-28 md:pt-0 pb-0">
         <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 flex-1 flex items-stretch relative z-10">
           <div className="w-full relative flex flex-col">
             {/* Mobile: Center Content */}
@@ -23,19 +23,19 @@ const Index = () => {
                 <h1 className="text-5xl font-display font-medium leading-tight">
                   Romain Barrau
                 </h1>
-                <p className="text-sm text-muted-foreground font-sans font-medium uppercase tracking-widest">
+                <p className="text-lg text-muted-foreground font-sans font-normal">
                   {language === 'en' ? 'Real Estate' : 'Immobilier à Bordeaux'}
                 </p>
               </div>
               
               <p className="!mt-5 text-xl opacity-90 font-light leading-relaxed">
-                {t('home.hero.title1')} <span className="italic font-serif">{t('home.hero.title2')}</span>{t('home.hero.title3')}
+                {t('home.hero.title1')} <span className="font-semibold">{t('home.hero.title2')}</span>{t('home.hero.title3')}
                 <br />
-                {t('home.hero.title4')} <span className="italic font-serif">{t('home.hero.title5')}</span>{t('home.hero.title6')}
+                {t('home.hero.title4')} <span className="font-semibold">{t('home.hero.title5')}</span>{t('home.hero.title6')}
               </p>
 
-                <Button size="lg" className="mt-6 bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground" onClick={() => window.location.href = `${import.meta.env.BASE_URL}contact`}>
-                  {t('home.hero.cta')}
+                <Button asChild size="lg" className="mt-6 bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground">
+                  <a href="https://wa.me/33669119336?text=Bonjour%20Romain" target="_blank" rel="noopener noreferrer">{t('home.hero.whatsapp')}</a>
                 </Button>
                 <p className="!mt-6 font-sans text-sm text-muted-foreground">{t('home.stats.line')}</p>
 
@@ -51,36 +51,36 @@ const Index = () => {
             </div>
 
             {/* Desktop: Split Layout */}
-            <div className="hidden md:grid md:flex-1 md:grid-cols-2 md:gap-12 lg:gap-16 items-stretch">
+            <div className="hidden md:grid md:flex-1 md:grid-cols-[minmax(0,1fr)_auto] md:gap-12 lg:gap-16 items-stretch">
               {/* Left: Text Content */}
               <div className="self-center text-foreground space-y-8">
                 <div className="space-y-3">
                   <h1 className="text-5xl lg:text-6xl xl:text-7xl font-display font-medium leading-tight">
                     Romain Barrau
                   </h1>
-                  <p className="text-sm text-muted-foreground font-sans font-medium uppercase tracking-widest">
+                  <p className="text-lg text-muted-foreground font-sans font-normal">
                     {language === 'en' ? 'Real Estate' : 'Immobilier à Bordeaux'}
                   </p>
                 </div>
                 
                 <p className="!mt-5 text-2xl lg:text-3xl opacity-90 font-light leading-relaxed">
-                  {t('home.hero.title1')} <span className="italic font-serif">{t('home.hero.title2')}</span>{t('home.hero.title3')}
+                  {t('home.hero.title1')} <span className="font-semibold">{t('home.hero.title2')}</span>{t('home.hero.title3')}
                   <br />
-                  {t('home.hero.title4')} <span className="italic font-serif">{t('home.hero.title5')}</span>{t('home.hero.title6')}
+                  {t('home.hero.title4')} <span className="font-semibold">{t('home.hero.title5')}</span>{t('home.hero.title6')}
                 </p>
 
-              <Button size="lg" className="mt-6 bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground" onClick={() => window.location.href = `${import.meta.env.BASE_URL}contact`}>
-                {t('home.hero.cta')}
+              <Button asChild size="lg" className="mt-6 bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground">
+                <a href="https://wa.me/33669119336?text=Bonjour%20Romain" target="_blank" rel="noopener noreferrer">{t('home.hero.whatsapp')}</a>
               </Button>
               <p className="!mt-6 font-sans text-sm text-muted-foreground">{t('home.stats.line')}</p>
               </div>
 
               {/* Right: Image */}
-              <div className="relative self-end h-[calc(100vh-5rem)] max-h-[800px] flex items-end justify-center">
+              <div className="relative self-end h-screen max-w-[55vw] flex items-end justify-center">
                 <img 
                   src={romainHero} 
                   alt="Romain Barrau - Real Estate Agent" 
-                  className="h-full max-h-full w-auto max-w-full object-contain object-bottom relative z-10" 
+                  className="h-full w-auto max-w-full object-contain object-bottom relative z-10" 
                 />
               </div>
             </div>

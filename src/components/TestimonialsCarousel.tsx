@@ -1,14 +1,38 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card } from '@/components/ui/card';
-import { Star, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
+import { Star, ChevronDown, ChevronUp } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 
 const TestimonialsCarousel = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  // "Lire plus" only for reviews whose text really exceeds the 5-line clamp
+  const textRefs = useRef<Record<number, HTMLParagraphElement | null>>({});
+  const [overflowing, setOverflowing] = useState<Record<number, boolean>>({});
+
+  useEffect(() => {
+    const measure = () => {
+      const next: Record<number, boolean> = {};
+      for (const [id, el] of Object.entries(textRefs.current)) {
+        if (!el) continue;
+        // the paragraph is not stretched, so a clamped one is shorter than its content
+        next[Number(id)] = el.scrollHeight > el.clientHeight + 1;
+      }
+      setOverflowing((prev) => {
+        // keep "Lire moins" available while a review is expanded
+        if (expandedId !== null) next[expandedId] = prev[expandedId] ?? true;
+        return next;
+      });
+    };
+    measure();
+    document.fonts?.ready.then(measure);
+    const observer = new ResizeObserver(measure);
+    Object.values(textRefs.current).forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, [language, expandedId]);
 
   const testimonials = [
     { id: 1, name: 'Nikita Godart', rating: 5, url: 'https://share.google/z4qb8oCGVZCiSvMkN' },
@@ -30,7 +54,12 @@ const TestimonialsCarousel = () => {
           <h2 className="text-3xl md:text-4xl font-display font-medium text-foreground">
             {t('home.testimonials.title')}
           </h2>
-          <p className="mt-2 text-sm text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-2 inline-flex items-center gap-2 text-sm text-muted-foreground">
+            <span className="flex gap-0.5" aria-hidden="true">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-3.5 w-3.5 fill-accent-warm text-accent-warm" />
+              ))}
+            </span>
             {t('home.testimonials.subtitle')}
           </p>
         </div>
@@ -60,47 +89,42 @@ const TestimonialsCarousel = () => {
                       ))}
                     </div>
                     
-                    <p className={`text-base text-foreground/90 leading-relaxed mb-4 md:mb-6 flex-grow ${!isExpanded ? 'line-clamp-5' : ''}`}>
-                      {t(`home.testimonials.review${testimonial.id}`)}
-                    </p>
+                    <div className="mb-4 md:mb-6 flex-grow">
+                      <p
+                        ref={(el) => { textRefs.current[testimonial.id] = el; }}
+                        className={`text-base text-foreground/90 leading-relaxed ${!isExpanded ? 'line-clamp-5' : ''}`}
+                      >
+                        {t(`home.testimonials.review${testimonial.id}`)}
+                      </p>
+                    </div>
 
                     <div className="mt-auto border-t border-border/40">
                       <p className="mt-4 font-medium text-foreground text-base">
                         {testimonial.name}
                       </p>
                       
-                      <div className="mt-3 flex flex-row items-center gap-4">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => setExpandedId(isExpanded ? null : testimonial.id)}
-                          className="h-auto p-0 text-xs text-muted-foreground hover:text-foreground hover:bg-transparent"
-                        >
-                          {isExpanded ? (
-                            <>
-                              <ChevronUp className="h-3 w-3 mr-1" />
-                              {t('home.testimonials.readLess')}
-                            </>
-                          ) : (
-                            <>
-                              <ChevronDown className="h-3 w-3 mr-1" />
-                              {t('home.testimonials.readMore')}
-                            </>
-                          )}
-                        </Button>
-
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          asChild
-                          className="h-auto p-0 text-xs text-muted-foreground hover:text-foreground hover:bg-transparent"
-                        >
-                          <a href={testimonial.url} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-3 w-3 mr-1" />
-                            {t('home.testimonials.viewOnGoogle')}
-                          </a>
-                        </Button>
-                      </div>
+                      {(overflowing[testimonial.id] || isExpanded) && (
+                        <div className="mt-3 flex flex-row items-center gap-4">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setExpandedId(isExpanded ? null : testimonial.id)}
+                            className="h-auto p-0 text-xs text-muted-foreground hover:text-foreground hover:bg-transparent"
+                          >
+                            {isExpanded ? (
+                              <>
+                                <ChevronUp className="h-3 w-3 mr-1" />
+                                {t('home.testimonials.readLess')}
+                              </>
+                            ) : (
+                              <>
+                                <ChevronDown className="h-3 w-3 mr-1" />
+                                {t('home.testimonials.readMore')}
+                              </>
+                            )}
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </Card>
                 </CarouselItem>
