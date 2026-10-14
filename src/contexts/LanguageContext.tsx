@@ -92,7 +92,7 @@ const translations = {
     
     // About
     'about.title': 'À propos',
-    'about.content': "Je suis Romain Barrau, conseiller immobilier chez IAD France, le réseau de conseillers immobiliers indépendants.\n\nAujourd'hui, j'aide les investisseurs et les familles à naviguer dans l'immobilier au Portugal en toute confiance, en combinant réflexion stratégique, créativité et passion.\n\nJe suis passionné par l'immobilier car il va bien au-delà des briques et des chiffres : il crée stabilité, confort et sens dans la vie des gens. Mon objectif est d'être un partenaire actif dans la réalisation des projets de mes clients.\n\nOriginaire de France, j'ai étudié et travaillé au Royaume-Uni, à Hong Kong, Amsterdam et Paris avant de choisir Lisbonne comme base. Ce parcours international me donne une vision globale et une perspective unique sur le marché portugais.",
+    'about.content': "Je suis Romain Barrau, conseiller immobilier chez IAD France, le réseau de conseillers immobiliers indépendants.\n\nAujourd’hui de retour à Bordeaux, j’aide les familles et les investisseurs à naviguer dans l’immobilier en toute confiance, en combinant réflexion stratégique, créativité et passion.\n\nJe suis passionné par l’immobilier car il va bien au-delà des briques et des chiffres : il crée stabilité, confort et sens dans la vie des gens. Mon objectif est d’être un partenaire actif dans la réalisation des projets de mes clients.\n\nOriginaire de France, j’ai étudié et vécu à Bordeaux avant de travailler au Royaume-Uni, à Hong Kong, à Amsterdam, à Paris, puis à Lisbonne. Ce parcours international me donne une vision globale et une perspective unique, que je mets aujourd’hui au service du marché bordelais.",
     'about.timeline.title': 'Parcours',
     
     // Contact
@@ -192,7 +192,7 @@ const translations = {
     
     // About
     'about.title': 'About',
-    'about.content': "I'm Romain Barrau, Real Estate advisor at IAD France, the network of independent real estate advisors.\n\nToday, I help investors and families navigate real estate in Portugal with confidence, combining strategic thinking, creativity, and passion.\n\nI'm passionate about real estate because it goes far beyond bricks and numbers—it creates stability, comfort, and meaning in people's lives. My goal is to be an active partner in making my clients' projects come true.\n\nOriginally from France, I've studied and worked across the UK, Hong Kong, Amsterdam, and Paris before choosing Lisbon as my home base. This international path gives me a global mindset and a unique perspective on the Portuguese market.",
+    'about.content': "I'm Romain Barrau, Real Estate advisor at IAD France, the network of independent real estate advisors.\n\nNow back in Bordeaux, I help families and investors navigate real estate with confidence, combining strategic thinking, creativity, and passion.\n\nI'm passionate about real estate because it goes far beyond bricks and numbers—it creates stability, comfort, and meaning in people's lives. My goal is to be an active partner in making my clients' projects come true.\n\nOriginally from France, I studied and lived in Bordeaux before working in the UK, Hong Kong, Amsterdam, Paris, and then Lisbon. This international path gives me a global mindset and a unique perspective, which I now put at the service of the Bordeaux market.",
     'about.timeline.title': 'Timeline',
     
     // Contact
