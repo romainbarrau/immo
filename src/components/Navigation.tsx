@@ -58,7 +58,7 @@ const Navigation = () => {
               Romain Barrau
             </span>
             <span className="text-xs font-medium text-muted-foreground tracking-widest uppercase mt-1">
-              Real Estate
+              {t('brand.subtitle')}
             </span>
           </Link>
 

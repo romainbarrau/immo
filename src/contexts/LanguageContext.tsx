@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 type Language = 'fr' | 'en';
 
@@ -33,7 +33,7 @@ const translations = {
     'home.dream.agent': 'agent',
     'home.dream.title2': 'L\'énergie d\'un',
     'home.dream.entrepreneur': 'entrepreneur',
-    'home.dream.description': 'Animé par l\'architecture, les histoires et les gens, j\'aide mes clients à acheter, vendre et investir dans des propriétés significatives à travers le Portugal. Mon objectif : rendre chaque parcours immobilier transparent, personnel et inspirant.',
+    'home.dream.description': 'Animé par l\'architecture, les histoires et les gens, j\'aide mes clients à acheter, vendre et investir dans des propriétés significatives à Bordeaux et dans sa région. Mon objectif : rendre chaque parcours immobilier transparent, personnel et inspirant.',
     'home.dream.cta': 'Me contacter',
     'home.inclusions.title': 'Notre univers',
     'home.inclusions.creative': 'créatif',
@@ -106,6 +106,36 @@ const translations = {
     
     // Footer
     'footer.tagline': 'Conseiller immobilier',
+    'brand.subtitle': 'Immobilier',
+    'home.stats.transactions': 'de transactions',
+    'home.stats.clients': 'clients satisfaits',
+    'videos.concepts': 'Concepts immobiliers',
+    'contact.getInTouch': 'Me joindre',
+    'contact.followMe': 'Me suivre',
+    'contact.placeholder.name': 'Jean Dupont',
+    'contact.placeholder.email': 'jean@exemple.fr',
+    'contact.placeholder.message': 'Votre message...',
+    'contact.successDescription': 'Votre message a bien été envoyé !',
+    'contact.error': 'Erreur',
+    'contact.errorDescription': "L'envoi du message a échoué. Veuillez réessayer.",
+    'auth.login': 'Connexion admin',
+    'auth.signup': 'Créer un compte',
+    'auth.loginSubtitle': "Connectez-vous pour accéder à l'administration",
+    'auth.signupSubtitle': 'Créer un nouveau compte',
+    'auth.password': 'Mot de passe',
+    'auth.wait': 'Veuillez patienter...',
+    'auth.signIn': 'Se connecter',
+    'auth.toSignup': 'Pas de compte ? Créer un compte',
+    'auth.toLogin': 'Déjà un compte ? Se connecter',
+    'auth.error': 'Erreur',
+    'auth.success': 'Succès',
+    'auth.invalidEmail': 'Veuillez saisir une adresse e-mail valide',
+    'auth.shortPassword': 'Le mot de passe doit contenir au moins 6 caractères',
+    'auth.invalidCredentials': 'E-mail ou mot de passe incorrect. Veuillez réessayer.',
+    'auth.loggedIn': 'Connexion réussie !',
+    'auth.alreadyRegistered': 'Un compte existe déjà avec cet e-mail. Connectez-vous.',
+    'auth.created': 'Compte créé ! Vous pouvez maintenant vous connecter.',
+    'auth.unexpected': 'Une erreur inattendue est survenue. Veuillez réessayer.',
     'footer.rights': 'Tous droits réservés',
     'footer.designed': 'Conçu avec',
   },
@@ -133,7 +163,7 @@ const translations = {
     'home.dream.agent': 'agent',
     'home.dream.title2': 'The energy of an',
     'home.dream.entrepreneur': 'entrepreneur',
-    'home.dream.description': 'Driven by architecture, stories, and people, I help clients buy, sell, and invest in meaningful properties across Portugal. My goal: make every real estate journey transparent, personal, and inspiring.',
+    'home.dream.description': 'Driven by architecture, stories, and people, I help clients buy, sell, and invest in meaningful properties in Bordeaux and the surrounding area. My goal: make every real estate journey transparent, personal, and inspiring.',
     'home.dream.cta': 'Get in touch',
     'home.inclusions.title': 'Our',
     'home.inclusions.creative': 'creative',
@@ -206,6 +236,36 @@ const translations = {
     
     // Footer
     'footer.tagline': 'Real Estate Advisor',
+    'brand.subtitle': 'Real Estate',
+    'home.stats.transactions': 'in transactions',
+    'home.stats.clients': 'satisfied clients',
+    'videos.concepts': 'Property Concepts',
+    'contact.getInTouch': 'Get in Touch',
+    'contact.followMe': 'Follow Me',
+    'contact.placeholder.name': 'John Doe',
+    'contact.placeholder.email': 'john@example.com',
+    'contact.placeholder.message': 'Your message...',
+    'contact.successDescription': 'Your message has been sent successfully!',
+    'contact.error': 'Error',
+    'contact.errorDescription': 'Failed to send the message. Please try again.',
+    'auth.login': 'Admin Login',
+    'auth.signup': 'Create Account',
+    'auth.loginSubtitle': 'Sign in to access the admin panel',
+    'auth.signupSubtitle': 'Register for a new account',
+    'auth.password': 'Password',
+    'auth.wait': 'Please wait...',
+    'auth.signIn': 'Sign In',
+    'auth.toSignup': "Don't have an account? Sign up",
+    'auth.toLogin': 'Already have an account? Sign in',
+    'auth.error': 'Error',
+    'auth.success': 'Success',
+    'auth.invalidEmail': 'Please enter a valid email address',
+    'auth.shortPassword': 'Password must be at least 6 characters',
+    'auth.invalidCredentials': 'Invalid email or password. Please try again.',
+    'auth.loggedIn': 'Logged in successfully!',
+    'auth.alreadyRegistered': 'An account with this email already exists. Please login instead.',
+    'auth.created': 'Account created! You can now log in.',
+    'auth.unexpected': 'An unexpected error occurred. Please try again.',
     'footer.rights': 'All rights reserved',
     'footer.designed': 'Designed with',
   },
@@ -214,7 +274,19 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  // Keep the visitor's choice across full page reloads; default to the browser language
+  const [language, setLanguage] = useState<Language>(() => {
+    try {
+      const saved = localStorage.getItem('language');
+      if (saved === 'fr' || saved === 'en') return saved;
+    } catch {}
+    return navigator.language?.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  });
+
+  useEffect(() => {
+    try { localStorage.setItem('language', language); } catch {}
+    document.documentElement.lang = language;
+  }, [language]);
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations.fr] || key;

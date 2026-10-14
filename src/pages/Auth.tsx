@@ -6,9 +6,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/hooks/useAuth';
 import { z } from 'zod';
-
-const emailSchema = z.string().email('Please enter a valid email address');
-const passwordSchema = z.string().min(6, 'Password must be at least 6 characters');
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,6 +18,9 @@ const Auth = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const { user, signIn, signUp } = useAuth();
+  const { t } = useLanguage();
+  const emailSchema = z.string().email(t('auth.invalidEmail'));
+  const passwordSchema = z.string().min(6, t('auth.shortPassword'));
 
   useEffect(() => {
     if (user) {
@@ -59,21 +60,21 @@ const Auth = () => {
         if (error) {
           if (error.message.includes('Invalid login credentials')) {
             toast({
-              title: 'Error',
-              description: 'Invalid email or password. Please try again.',
+              title: t('auth.error'),
+              description: t('auth.invalidCredentials'),
               variant: 'destructive',
             });
           } else {
             toast({
-              title: 'Error',
+              title: t('auth.error'),
               description: error.message,
               variant: 'destructive',
             });
           }
         } else {
           toast({
-            title: 'Success',
-            description: 'Logged in successfully!',
+            title: t('auth.success'),
+            description: t('auth.loggedIn'),
           });
           navigate('/admin/properties');
         }
@@ -82,29 +83,29 @@ const Auth = () => {
         if (error) {
           if (error.message.includes('User already registered')) {
             toast({
-              title: 'Error',
-              description: 'An account with this email already exists. Please login instead.',
+              title: t('auth.error'),
+              description: t('auth.alreadyRegistered'),
               variant: 'destructive',
             });
           } else {
             toast({
-              title: 'Error',
+              title: t('auth.error'),
               description: error.message,
               variant: 'destructive',
             });
           }
         } else {
           toast({
-            title: 'Success',
-            description: 'Account created! You can now log in.',
+            title: t('auth.success'),
+            description: t('auth.created'),
           });
           setIsLogin(true);
         }
       }
     } catch (err) {
       toast({
-        title: 'Error',
-        description: 'An unexpected error occurred. Please try again.',
+        title: t('auth.error'),
+        description: t('auth.unexpected'),
         variant: 'destructive',
       });
     } finally {
@@ -117,12 +118,12 @@ const Auth = () => {
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-foreground">
-            {isLogin ? 'Admin Login' : 'Create Account'}
+            {isLogin ? t('auth.login') : t('auth.signup')}
           </h1>
           <p className="mt-2 text-muted-foreground">
             {isLogin
-              ? 'Sign in to access the admin panel'
-              : 'Register for a new account'}
+              ? t('auth.loginSubtitle')
+              : t('auth.signupSubtitle')}
           </p>
         </div>
 
@@ -147,7 +148,7 @@ const Auth = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="password" className="text-foreground">Password</Label>
+            <Label htmlFor="password" className="text-foreground">{t('auth.password')}</Label>
             <Input
               id="password"
               type="password"
@@ -171,10 +172,10 @@ const Auth = () => {
             disabled={isSubmitting}
           >
             {isSubmitting
-              ? 'Please wait...'
+              ? t('auth.wait')
               : isLogin
-              ? 'Sign In'
-              : 'Create Account'}
+              ? t('auth.signIn')
+              : t('auth.signup')}
           </Button>
         </form>
 
@@ -185,8 +186,8 @@ const Auth = () => {
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             {isLogin
-              ? "Don't have an account? Sign up"
-              : 'Already have an account? Sign in'}
+              ? t('auth.toSignup')
+              : t('auth.toLogin')}
           </button>
         </div>
       </div>

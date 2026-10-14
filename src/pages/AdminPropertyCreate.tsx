@@ -242,7 +242,7 @@ const AdminPropertyCreate = () => {
                     id="location_fr"
                     value={formData.location_fr}
                     onChange={(e) => handleInputChange('location_fr', e.target.value)}
-                    placeholder="Lisbonne, Portugal"
+                    placeholder="Bordeaux, France"
                   />
                 </div>
 
@@ -252,7 +252,7 @@ const AdminPropertyCreate = () => {
                     id="location_en"
                     value={formData.location_en}
                     onChange={(e) => handleInputChange('location_en', e.target.value)}
-                    placeholder="Lisbon, Portugal"
+                    placeholder="Bordeaux, France"
                   />
                 </div>
               </div>

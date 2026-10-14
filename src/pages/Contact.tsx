@@ -39,15 +39,15 @@ const Contact = () => {
 
       toast({
         title: t('contact.success'),
-        description: "Your message has been sent successfully!",
+        description: t('contact.successDescription'),
       });
       
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
-        title: "Error",
-        description: "Failed to send the message. Please try again.",
+        title: t('contact.error'),
+        description: t('contact.errorDescription'),
         variant: "destructive",
       });
     } finally {
@@ -82,7 +82,7 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="John Doe"
+                    placeholder={t('contact.placeholder.name')}
                   />
                 </div>
                 <div>
@@ -94,7 +94,7 @@ const Contact = () => {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="john@example.com"
+                    placeholder={t('contact.placeholder.email')}
                   />
                 </div>
                 <div>
@@ -105,7 +105,7 @@ const Contact = () => {
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Your message..."
+                    placeholder={t('contact.placeholder.message')}
                     rows={6}
                   />
                 </div>
@@ -118,7 +118,7 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="space-y-8 animate-slide-up" style={{animationDelay: '0.2s'}}>
               <Card className="p-8">
-                <h3 className="font-display font-semibold text-xl mb-6">Get in Touch</h3>
+                <h3 className="font-display font-semibold text-xl mb-6">{t('contact.getInTouch')}</h3>
                 <div className="space-y-4">
                   <a
                     href="mailto:romain.barrau@iadfrance.fr"
@@ -140,7 +140,7 @@ const Contact = () => {
               </Card>
 
               <Card className="p-8">
-                <h3 className="font-display font-semibold text-xl mb-6">Follow Me</h3>
+                <h3 className="font-display font-semibold text-xl mb-6">{t('contact.followMe')}</h3>
                 <div className="flex gap-4">
                   <a
                     href="https://instagram.com/romainbarrau"

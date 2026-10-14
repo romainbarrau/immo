@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { MapPin, Euro } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface PropertyCardProps {
   image: string;
@@ -11,6 +12,8 @@ interface PropertyCardProps {
 }
 
 const PropertyCard = ({ image, title, location, price, sold, onClick }: PropertyCardProps) => {
+  const { t } = useLanguage();
+
   return (
     <Card 
       className="overflow-hidden group cursor-pointer transition-all hover:shadow-lg h-full flex flex-col"
@@ -24,7 +27,7 @@ const PropertyCard = ({ image, title, location, price, sold, onClick }: Property
         />
         {sold && (
           <div className="absolute inset-0 bg-foreground/60 flex items-center justify-center">
-            <span className="text-background text-3xl font-display font-bold">SOLD</span>
+            <span className="text-background text-3xl font-display font-bold">{t('sold.badge')}</span>
           </div>
         )}
       </div>
