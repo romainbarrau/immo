@@ -13,6 +13,7 @@ git init -q -b gh-pages
 git add -A
 git -c user.name="$(git -C .. config user.name || echo deploy)" -c user.email="$(git -C .. config user.email || echo deploy@localhost)" \
   commit -q -m "Deploy $(git -C .. rev-parse --short HEAD)"
-git push -q -f "$REMOTE" gh-pages
+# Use the gh account (romainbarrau) rather than the macOS keychain login
+git -c credential.helper= -c credential.helper='!gh auth git-credential' push -q -f "$REMOTE" gh-pages
 rm -rf .git
 echo "Publié : https://romainbarrau.github.io/romainbarrau-site/"
