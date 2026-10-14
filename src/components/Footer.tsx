@@ -31,7 +31,7 @@ const Footer = () => {
             <h4 className="font-display font-semibold mb-4 text-foreground">Follow</h4>
             <div className="flex space-x-4">
               <a
-                href="https://wa.me/351912345678"
+                href="https://wa.me/33669119336"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground/80 hover:text-foreground transition-colors"

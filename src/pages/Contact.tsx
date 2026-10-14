@@ -128,7 +128,7 @@ const Contact = () => {
                     <span>romain@seedrealestate.pt</span>
                   </a>
                   <a
-                    href="https://wa.me/351912345678"
+                    href="https://wa.me/33669119336"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
