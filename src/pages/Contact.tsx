@@ -121,11 +121,11 @@ const Contact = () => {
                 <h3 className="font-display font-semibold text-xl mb-6">Get in Touch</h3>
                 <div className="space-y-4">
                   <a
-                    href="mailto:romain@seedrealestate.pt"
+                    href="mailto:romain.barrau@iadfrance.fr"
                     className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Mail className="h-5 w-5" />
-                    <span>romain@seedrealestate.pt</span>
+                    <span>romain.barrau@iadfrance.fr</span>
                   </a>
                   <a
                     href="https://wa.me/33669119336"

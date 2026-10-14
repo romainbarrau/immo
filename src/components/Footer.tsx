@@ -21,7 +21,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-semibold mb-4 text-foreground">{t('nav.contact')}</h4>
             <div className="space-y-2 text-foreground/80">
-              <p>romain@seedrealestate.pt</p>
+              <p>romain.barrau@iadfrance.fr</p>
               <p>Seed Real Estate Lisbon</p>
             </div>
           </div>
@@ -55,7 +55,7 @@ const Footer = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="mailto:romain@seedrealestate.pt"
+                href="mailto:romain.barrau@iadfrance.fr"
                 className="text-foreground/80 hover:text-foreground transition-colors"
               >
                 <Mail className="h-5 w-5" />
