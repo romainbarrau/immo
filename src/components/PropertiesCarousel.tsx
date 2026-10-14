@@ -79,7 +79,7 @@ const PropertiesCarousel = () => {
                   location={language === 'en' ? property.location_en : property.location_fr}
                   price={new Intl.NumberFormat('fr-FR').format(property.price)}
                   sold={property.status === 'sold'}
-                  onClick={() => window.location.href = `${import.meta.env.BASE_URL}listing/${property.id}`}
+                  onClick={() => window.location.href = `${import.meta.env.BASE_URL}listings/${property.id}`}
                 />
               </CarouselItem>
             ))}
