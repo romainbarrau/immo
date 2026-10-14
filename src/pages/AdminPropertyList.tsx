@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { useProperties } from '@/hooks/useProperties';
 import { Button } from '@/components/ui/button';
@@ -6,7 +7,7 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Loader2, Plus, Edit, Trash2, FileText, Star, Video } from 'lucide-react';
+import { Loader2, Plus, Edit, Trash2, Star, Video } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
@@ -23,6 +24,7 @@ import {
 
 const AdminPropertyList = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { data: properties, isLoading, refetch } = useProperties();
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [deleting, setDeleting] = useState(false);
@@ -38,6 +40,17 @@ const AdminPropertyList = () => {
         .eq('id', deleteId);
 
       if (error) throw error;
+
+      // Photos are stored under "<property id>/"; remove them so the storage does not fill up
+      const { data: files } = await supabase.storage.from('property-images').list(deleteId, { limit: 1000 });
+      if (files && files.length > 0) {
+        const { error: storageError } = await supabase.storage
+          .from('property-images')
+          .remove(files.map((f) => `${deleteId}/${f.name}`));
+        if (storageError) console.error('Error deleting property photos:', storageError);
+      }
+      queryClient.invalidateQueries({ queryKey: ['properties'] });
+      queryClient.invalidateQueries({ queryKey: ['property', deleteId] });
 
       toast.success('Propriété supprimée avec succès');
       refetch();
@@ -82,12 +95,6 @@ const AdminPropertyList = () => {
               </Button>
             </div>
             <div className="flex gap-2 flex-wrap">
-              <Link to="/admin/blog">
-                <Button variant="outline" size="sm">
-                  <FileText className="w-4 h-4 mr-2" />
-                  Articles
-                </Button>
-              </Link>
               <Link to="/admin/reviews">
                 <Button variant="outline" size="sm">
                   <Star className="w-4 h-4 mr-2" />

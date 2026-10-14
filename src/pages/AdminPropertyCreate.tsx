@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { compressImage } from '@/lib/compressImage';
@@ -22,6 +23,7 @@ interface ImageItem {
 
 const AdminPropertyCreate = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<ImageItem[]>([]);
   
@@ -121,6 +123,7 @@ const AdminPropertyCreate = () => {
         }
       }
 
+      queryClient.invalidateQueries({ queryKey: ['properties'] });
       toast.success('Propriété créée avec succès');
       navigate('/listings');
     } catch (error) {

@@ -34,7 +34,6 @@ const Navigation = () => {
 
   const contentLinks = [
     { path: '/videos', label: t('nav.videos'), desc: language === 'en' ? 'Property tours & stories' : 'Visites et histoires' },
-    { path: '/blog', label: t('nav.blog'), desc: language === 'en' ? 'Insights & market trends' : 'Analyses & tendances' },
   ];
 
   const toggleLanguage = () => {

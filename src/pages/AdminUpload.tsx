@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { compressImage } from '@/lib/compressImage';
 import { Button } from '@/components/ui/button';
@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { Upload, Loader2 } from 'lucide-react';
 
 const AdminUpload = () => {
+  const queryClient = useQueryClient();
   const [selectedPropertyId, setSelectedPropertyId] = useState<string>('');
   const [uploading, setUploading] = useState(false);
   const [files, setFiles] = useState<FileList | null>(null);
@@ -95,6 +96,8 @@ const AdminUpload = () => {
         }
       }
 
+      queryClient.invalidateQueries({ queryKey: ['properties'] });
+      queryClient.invalidateQueries({ queryKey: ['property', selectedPropertyId] });
       toast.success(`${files.length} photo(s) uploadée(s) avec succès`);
       setFiles(null);
       // Reset file input

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { compressImage } from '@/lib/compressImage';
@@ -25,6 +26,7 @@ interface ImageItem {
 const AdminPropertyEdit = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { data, isLoading: loadingProperty } = useProperty(id || '');
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<ImageItem[]>([]);
@@ -175,6 +177,8 @@ const AdminPropertyEdit = () => {
           .eq('id', id);
       }
 
+      queryClient.invalidateQueries({ queryKey: ['properties'] });
+      queryClient.invalidateQueries({ queryKey: ['property', id] });
       toast.success('Propriété mise à jour avec succès');
       navigate('/admin/properties');
     } catch (error) {

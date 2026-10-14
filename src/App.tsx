@@ -11,8 +11,6 @@ import Listings from "./pages/Listings";
 import ListingDetail from "./pages/ListingDetail";
 import SoldProperties from "./pages/SoldProperties";
 import Videos from "./pages/Videos";
-import Blog from "./pages/Blog";
-import BlogArticle from "./pages/BlogArticle";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -22,9 +20,6 @@ import AdminImport from "./pages/AdminImport";
 import AdminPropertyCreate from "./pages/AdminPropertyCreate";
 import AdminPropertyList from "./pages/AdminPropertyList";
 import AdminPropertyEdit from "./pages/AdminPropertyEdit";
-import AdminBlogList from "./pages/AdminBlogList";
-import AdminBlogCreate from "./pages/AdminBlogCreate";
-import AdminBlogEdit from "./pages/AdminBlogEdit";
 import AdminReviewsList from "./pages/AdminReviewsList";
 import AdminVideosList from "./pages/AdminVideosList";
 
@@ -43,8 +38,6 @@ const App = () => (
             <Route path="/listings/:id" element={<ListingDetail />} />
             <Route path="/sold" element={<SoldProperties />} />
             <Route path="/videos" element={<Videos />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogArticle />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/auth" element={<Auth />} />
@@ -54,9 +47,6 @@ const App = () => (
             <Route path="/admin/properties" element={<ProtectedRoute requireAdmin><AdminPropertyList /></ProtectedRoute>} />
             <Route path="/admin/create" element={<ProtectedRoute requireAdmin><AdminPropertyCreate /></ProtectedRoute>} />
             <Route path="/admin/edit/:id" element={<ProtectedRoute requireAdmin><AdminPropertyEdit /></ProtectedRoute>} />
-            <Route path="/admin/blog" element={<ProtectedRoute requireAdmin><AdminBlogList /></ProtectedRoute>} />
-            <Route path="/admin/blog/create" element={<ProtectedRoute requireAdmin><AdminBlogCreate /></ProtectedRoute>} />
-            <Route path="/admin/blog/edit/:id" element={<ProtectedRoute requireAdmin><AdminBlogEdit /></ProtectedRoute>} />
             <Route path="/admin/reviews" element={<ProtectedRoute requireAdmin><AdminReviewsList /></ProtectedRoute>} />
             <Route path="/admin/videos" element={<ProtectedRoute requireAdmin><AdminVideosList /></ProtectedRoute>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
