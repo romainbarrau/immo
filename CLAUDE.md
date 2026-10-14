@@ -78,10 +78,9 @@ tailwind.config.ts, les keyframes `float-1`, `float-2`, `rotate-border`
 ## Dépôt public et isolation du site Lovable
 - Ce dépôt (`pierrestang/romainbarrau-site`, public) est la version retravaillée,
   publiée sur GitHub Pages : https://pierrestang.github.io/romainbarrau-site/.
-  Chaque push sur `main` redéploie le site.
+  Publier : `npm run deploy` (build local + push de `dist/` sur `gh-pages`).
 - Il est indépendant du dépôt Lovable de Romain (`romainbarrau1997-wq/romainbarrau`),
   qui reste intact : ne jamais y pousser (Lovable synchronise ce dépôt avec son
   site en ligne).
-- Base Supabase : `ykwjqlehkvllkgdkenhr` (`.env.local` en local, variables du
-  dépôt GitHub en production). La base Lovable de Romain
+- Base Supabase : `ykwjqlehkvllkgdkenhr` (`.env.local`, utilisé aussi pour le build publié). La base Lovable de Romain
   (`fuuzkchponqcnuhrpkgv`) ne doit jamais recevoir d'écriture.

@@ -13,9 +13,11 @@ npm install
 npm run dev   # http://localhost:8080
 ```
 Les variables Supabase (`VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`,
-`VITE_SUPABASE_PROJECT_ID`) vont dans `.env.local` (non versionné). En
-production, elles sont lues depuis les variables du dépôt GitHub.
+`VITE_SUPABASE_PROJECT_ID`) vont dans `.env.local` (non versionné).
 
 ## Déploiement
-Chaque push sur `main` construit le site et le publie sur GitHub Pages
-(`.github/workflows/deploy.yml`).
+```sh
+npm run deploy
+```
+Construit le site avec les valeurs de `.env.local` et publie `dist/` sur la
+branche `gh-pages`, servie par GitHub Pages.
