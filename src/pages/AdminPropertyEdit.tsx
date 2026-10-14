@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
+import { compressImage } from '@/lib/compressImage';
 import { useProperty } from '@/hooks/useProperties';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -132,12 +133,13 @@ const AdminPropertyEdit = () => {
       for (const image of images) {
         if (image.file) {
           // New image - upload it
-          const fileExt = image.file.name.split('.').pop();
+          const file = await compressImage(image.file);
+          const fileExt = file.name.split('.').pop();
           const fileName = `${id}/${Date.now()}_${displayOrder}.${fileExt}`;
 
           const { error: uploadError } = await supabase.storage
             .from('property-images')
-            .upload(fileName, image.file);
+            .upload(fileName, file);
 
           if (uploadError) throw uploadError;
 

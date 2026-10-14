@@ -11,6 +11,9 @@
   `contact-form` envoie les messages par e-mail via Resend (secrets Supabase
   `RESEND_API_KEY`, `CONTACT_TO_EMAIL` = romain.barrau@iadfrance.fr), déployée sur
   `ykwjqlehkvllkgdkenhr` avec `supabase functions deploy contact-form --no-verify-jwt`.
+- Admin : les photos sont compressées dans le navigateur avant envoi
+  (`src/lib/compressImage.ts`, 2400 px max, JPEG 85) pour rester sous le
+  quota de stockage gratuit Supabase (1 Go).
 - Ne pas modifier le design ni les textes sans demande explicite.
 
 ## Isolation

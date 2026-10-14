@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import { compressImage } from '@/lib/compressImage';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
@@ -57,7 +58,7 @@ const AdminUpload = () => {
         : -1;
 
       for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+        const file = await compressImage(files[i]);
         const fileExt = file.name.split('.').pop();
         const fileName = `${selectedPropertyId}/${Date.now()}_${i}.${fileExt}`;
 
