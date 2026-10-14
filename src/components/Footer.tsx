@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react';
 
@@ -22,13 +23,17 @@ const Footer = () => {
             <h4 className="font-display font-semibold mb-4 text-foreground">{t('nav.contact')}</h4>
             <div className="space-y-2 text-foreground/80">
               <p>romain.barrau@iadfrance.fr</p>
-              <p>IAD France</p>
+              <p>
+                <a href="tel:+33669119336" className="hover:text-foreground transition-colors">
+                  +33 6 69 11 93 36
+                </a>
+              </p>
             </div>
           </div>
 
           {/* Social Links */}
           <div>
-            <h4 className="font-display font-semibold mb-4 text-foreground">Follow</h4>
+            <h4 className="font-display font-semibold mb-4 text-foreground">{t('footer.follow')}</h4>
             <div className="flex space-x-4">
               <a
                 href="https://wa.me/33669119336"
@@ -66,7 +71,10 @@ const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-foreground/80">
           <p>
-            © {new Date().getFullYear()} Romain Barrau — {t('footer.rights')} | IAD France
+            © {new Date().getFullYear()} Romain Barrau · {t('footer.independent')} ·{' '}
+            <Link to="/mentions-legales" className="underline-offset-4 hover:underline hover:text-foreground">
+              {t('footer.legal')}
+            </Link>
           </p>
         </div>
       </div>

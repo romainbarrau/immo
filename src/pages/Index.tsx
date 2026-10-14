@@ -40,11 +40,11 @@ const Index = () => {
                 <p className="!mt-6 font-sans text-sm text-muted-foreground">{t('home.stats.line')}</p>
 
               <div className="relative pt-8 !mt-auto">
-                <div className="relative h-[400px] flex items-end justify-center">
+                <div className="relative flex items-end justify-center">
                   <img 
                     src={romainHero} 
                     alt="Romain Barrau - Real Estate Agent" 
-                    className="h-full w-auto object-contain object-bottom" 
+                    className="w-full h-auto object-contain object-bottom" 
                   />
                 </div>
               </div>
@@ -76,11 +76,11 @@ const Index = () => {
               </div>
 
               {/* Right: Image */}
-              <div className="relative self-end h-[650px] lg:h-[750px] xl:h-[800px] flex items-end justify-center">
+              <div className="relative self-end h-[calc(100vh-5rem)] max-h-[800px] flex items-end justify-center">
                 <img 
                   src={romainHero} 
                   alt="Romain Barrau - Real Estate Agent" 
-                  className="h-full w-auto object-contain object-bottom relative z-10" 
+                  className="h-full max-h-full w-auto max-w-full object-contain object-bottom relative z-10" 
                 />
               </div>
             </div>

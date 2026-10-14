@@ -4,9 +4,38 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { MapPin, Euro, Home, Bed, Bath, Square, ArrowLeft, Loader2, Trees } from 'lucide-react';
+import { MapPin, Home, Bed, Bath, Square, ArrowLeft, Loader2, Trees } from 'lucide-react';
 import { useProperty } from '@/hooks/useProperties';
 import ImageGallery from '@/components/ImageGallery';
+import { ReactNode } from 'react';
+
+// Lines starting with "- " become a real bulleted list; other lines stay as text
+const descriptionBlocks = (text: string | null | undefined) => {
+  if (!text) return null;
+  const blocks: ReactNode[] = [];
+  let items: string[] = [];
+  let lines: string[] = [];
+  const flushItems = () => {
+    if (items.length) blocks.push(
+      <ul key={blocks.length} className="list-disc pl-5 space-y-1">
+        {items.map((item, i) => <li key={i}>{item}</li>)}
+      </ul>
+    );
+    items = [];
+  };
+  const flushLines = () => {
+    if (lines.join('').trim()) blocks.push(<p key={blocks.length} className="whitespace-pre-line">{lines.join('\n').trim()}</p>);
+    lines = [];
+  };
+  for (const line of text.split('\n')) {
+    const bullet = line.match(/^\s*-\s+(.*)$/);
+    if (bullet) { flushLines(); items.push(bullet[1]); }
+    else { flushItems(); lines.push(line); }
+  }
+  flushItems(); flushLines();
+  return blocks;
+};
+
 const ListingDetail = () => {
   const {
     id
@@ -31,6 +60,7 @@ const ListingDetail = () => {
   }
   const property = data?.property;
   const images = data?.images || [];
+  const isSold = property?.status === 'sold';
   
   // Si pas d'images dans la galerie mais une image principale, on l'utilise
   const galleryImages = images.length > 0 
@@ -51,13 +81,13 @@ const ListingDetail = () => {
   return <div className="min-h-screen">
       <Navigation />
       
-      <div className="container mx-auto px-4 md:px-6 py-20 pt-32">
-        <Button variant="ghost" className="mb-6" onClick={() => navigate('/listings')}>
+      <div className="container mx-auto max-w-6xl px-4 md:px-6 py-16 pt-24">
+        <Button variant="ghost" className="mb-4" onClick={() => navigate('/listings')}>
           <ArrowLeft className="mr-2 h-4 w-4" />
-          {language === 'fr' ? 'Retour aux listings' : 'Back to listings'}
+          {language === 'fr' ? 'Retour aux biens' : 'Back to properties'}
         </Button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
           <div>
             {galleryImages.length > 0 ? (
               <ImageGallery 
@@ -65,7 +95,7 @@ const ListingDetail = () => {
                 altText={language === 'fr' ? property.title_fr : property.title_en}
               />
             ) : (
-              <div className="aspect-[16/10] bg-muted rounded-lg flex items-center justify-center">
+              <div className="aspect-[4/3] bg-muted rounded-lg flex items-center justify-center">
                 <p className="text-muted-foreground">
                   {language === 'fr' ? 'Aucune image disponible' : 'No images available'}
                 </p>
@@ -74,63 +104,68 @@ const ListingDetail = () => {
           </div>
 
           <div className="space-y-6">
-            <div>
-              <p className="text-sm text-foreground/80 mb-1">
+            <div className="space-y-2">
+              <p className="text-xs text-muted-foreground">
                 {language === 'fr' ? 'Réf.' : 'Ref.'} {property.reference}
               </p>
-              <h1 className="text-4xl font-display font-bold mb-2 text-foreground">
+              <h1 className="text-3xl font-display font-medium text-foreground">
                 {language === 'fr' ? property.title_fr : property.title_en}
               </h1>
-              <div className="flex items-center text-foreground/80 mb-4">
+              <div className="flex items-center text-foreground/80">
                 <MapPin className="h-5 w-5 mr-2" />
-                <span className="text-lg">{language === 'fr' ? property.location_fr : property.location_en}</span>
-              </div>
-              <div className="flex items-center text-foreground font-bold text-3xl">
-                <Euro className="h-8 w-8 mr-2" />
-                <span>{property.price.toLocaleString('fr-FR')} €</span>
+                <span className="text-base">{language === 'fr' ? property.location_fr : property.location_en}</span>
               </div>
             </div>
 
-            <Card className="p-6">
+            <div className="flex items-center gap-3 text-foreground font-medium text-2xl">
+                <span>{property.price.toLocaleString('fr-FR')}{'\u00A0'}€</span>
+                {isSold && (
+                  <span className="rounded-sm bg-primary px-2 py-1 text-xs font-normal uppercase tracking-wide text-primary-foreground">
+                    {t('sold.label')}
+                  </span>
+                )}
+            </div>
+
+            <Card className="w-full p-5">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {property.bedrooms && <div className="flex flex-col items-center">
-                    <Bed className="h-6 w-6 mb-2 text-foreground" />
-                    <span className="font-semibold text-foreground">{property.bedrooms}</span>
-                    <span className="text-sm text-foreground/80">
+                    <Bed className="h-5 w-5 mb-2 text-foreground" />
+                    <span className="text-base font-medium text-foreground">{property.bedrooms}</span>
+                    <span className="text-sm text-muted-foreground">
                       {language === 'fr' ? 'Chambres' : 'Bedrooms'}
                     </span>
                   </div>}
                 {property.bathrooms && <div className="flex flex-col items-center">
-                    <Bath className="h-6 w-6 mb-2 text-foreground" />
-                    <span className="font-semibold text-foreground">{property.bathrooms}</span>
-                    <span className="text-sm text-foreground/80">
+                    <Bath className="h-5 w-5 mb-2 text-foreground" />
+                    <span className="text-base font-medium text-foreground">{property.bathrooms}</span>
+                    <span className="text-sm text-muted-foreground">
                       {language === 'fr' ? 'Salles de bain' : 'Bathrooms'}
                     </span>
                   </div>}
                 {property.area_m2 && <div className="flex flex-col items-center">
-                    <Square className="h-6 w-6 mb-2 text-foreground" />
-                    <span className="font-semibold text-foreground">{property.area_m2} m²</span>
-                    <span className="text-sm text-foreground/80">
+                    <Square className="h-5 w-5 mb-2 text-foreground" />
+                    <span className="text-base font-medium text-foreground">{property.area_m2} m²</span>
+                    <span className="text-sm text-muted-foreground">
                       {language === 'fr' ? 'Surface' : 'Area'}
                     </span>
                   </div>}
-                {property.land_area_m2 && <div className="flex flex-col items-center">
-                    <Trees className="h-6 w-6 mb-2 text-foreground" />
-                    <span className="font-semibold text-foreground">{property.land_area_m2.toLocaleString('fr-FR')} m²</span>
-                    <span className="text-sm text-foreground/80">
+                {property.land_area_m2 ? <div className="flex flex-col items-center">
+                    <Trees className="h-5 w-5 mb-2 text-foreground" />
+                    <span className="text-base font-medium text-foreground">{property.land_area_m2.toLocaleString('fr-FR')} m²</span>
+                    <span className="text-sm text-muted-foreground">
                       {language === 'fr' ? 'Terrain' : 'Land'}
                     </span>
-                  </div>}
+                  </div> : null}
               </div>
             </Card>
 
             {(property.description_fr || property.description_en) && <div>
-                <h2 className="text-2xl font-display font-semibold mb-3 text-foreground">
+                <h3 className="text-xl font-display font-medium mb-3 text-foreground">
                   {language === 'fr' ? 'Description' : 'Description'}
-                </h2>
-                <p className="text-foreground/90 leading-relaxed whitespace-pre-line">
-                  {language === 'fr' ? property.description_fr : property.description_en}
-                </p>
+                </h3>
+                <div className="space-y-3 text-base text-foreground/90 leading-relaxed">
+                  {descriptionBlocks(language === 'fr' ? property.description_fr : property.description_en)}
+                </div>
               </div>}
 
             {property.characteristics && Object.keys(property.characteristics).length > 0 && <div>
@@ -145,9 +180,13 @@ const ListingDetail = () => {
                 </div>
               </div>}
 
-            <Button className="w-full" size="lg" onClick={() => navigate('/contact')}>
-              {language === 'fr' ? 'Contactez-nous' : 'Contact us'}
-            </Button>
+            {!isSold && (
+              <Button asChild size="lg" className="bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground">
+                <a href="https://wa.me/33669119336?text=Bonjour%20Romain" target="_blank" rel="noopener noreferrer">
+                  {language === 'fr' ? 'Écrire sur WhatsApp' : 'Message on WhatsApp'}
+                </a>
+              </Button>
+            )}
           </div>
         </div>
       </div>

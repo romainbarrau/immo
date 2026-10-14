@@ -51,7 +51,7 @@ const ImageGallery = ({ images, altText }: ImageGalleryProps) => {
       <div className="space-y-4">
         {/* Main image */}
         <div 
-          className="relative aspect-[16/10] overflow-hidden rounded-lg cursor-pointer group"
+          className="relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group"
           onClick={() => openLightbox(0)}
         >
           <img
@@ -73,7 +73,7 @@ const ImageGallery = ({ images, altText }: ImageGalleryProps) => {
               {images.map((img, idx) => (
                 <CarouselItem key={img.id} className="pl-2 basis-1/2 md:basis-1/4">
                   <div
-                    className="relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group"
+                    className="relative h-20 overflow-hidden rounded-lg cursor-pointer group"
                     onClick={() => openLightbox(idx)}
                   >
                     <img

@@ -13,6 +13,7 @@ import Videos from "./pages/Videos";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import MentionsLegales from "./pages/MentionsLegales";
 import Auth from "./pages/Auth";
 import AdminUpload from "./pages/AdminUpload";
 import AdminImport from "./pages/AdminImport";
@@ -49,6 +50,7 @@ const App = () => (
             <Route path="/admin/reviews" element={<ProtectedRoute requireAdmin><AdminReviewsList /></ProtectedRoute>} />
             <Route path="/admin/videos" element={<ProtectedRoute requireAdmin><AdminVideosList /></ProtectedRoute>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

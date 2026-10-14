@@ -148,6 +148,9 @@ const translations = {
     'auth.created': 'Compte créé ! Vous pouvez maintenant vous connecter.',
     'auth.unexpected': 'Une erreur inattendue est survenue. Veuillez réessayer.',
     'footer.rights': 'Tous droits réservés',
+    'footer.follow': 'Me suivre',
+    'footer.independent': 'Conseiller indépendant IAD France',
+    'footer.legal': 'Mentions légales',
     'footer.designed': 'Conçu avec',
   },
   en: {
@@ -289,6 +292,9 @@ const translations = {
     'auth.created': 'Account created! You can now log in.',
     'auth.unexpected': 'An unexpected error occurred. Please try again.',
     'footer.rights': 'All rights reserved',
+    'footer.follow': 'Follow me',
+    'footer.independent': 'Independent IAD France advisor',
+    'footer.legal': 'Legal notice',
     'footer.designed': 'Designed with',
   },
 };
