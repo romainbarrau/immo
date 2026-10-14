@@ -92,7 +92,7 @@ const translations = {
     
     // About
     'about.title': 'À propos',
-    'about.content': "Je suis Romain Barrau, consultant immobilier chez Seed Real Estate, une agence internationale en pleine croissance basée à Lisbonne.\n\nAujourd'hui, j'aide les investisseurs et les familles à naviguer dans l'immobilier au Portugal en toute confiance, en combinant réflexion stratégique, créativité et passion.\n\nJe suis passionné par l'immobilier car il va bien au-delà des briques et des chiffres : il crée stabilité, confort et sens dans la vie des gens. Mon objectif est d'être un partenaire actif dans la réalisation des projets de mes clients.\n\nOriginaire de France, j'ai étudié et travaillé au Royaume-Uni, à Hong Kong, Amsterdam et Paris avant de choisir Lisbonne comme base. Ce parcours international me donne une vision globale et une perspective unique sur le marché portugais.",
+    'about.content': "Je suis Romain Barrau, conseiller immobilier chez IAD France, le réseau de conseillers immobiliers indépendants.\n\nAujourd'hui, j'aide les investisseurs et les familles à naviguer dans l'immobilier au Portugal en toute confiance, en combinant réflexion stratégique, créativité et passion.\n\nJe suis passionné par l'immobilier car il va bien au-delà des briques et des chiffres : il crée stabilité, confort et sens dans la vie des gens. Mon objectif est d'être un partenaire actif dans la réalisation des projets de mes clients.\n\nOriginaire de France, j'ai étudié et travaillé au Royaume-Uni, à Hong Kong, Amsterdam et Paris avant de choisir Lisbonne comme base. Ce parcours international me donne une vision globale et une perspective unique sur le marché portugais.",
     'about.timeline.title': 'Parcours',
     
     // Contact
@@ -191,7 +191,7 @@ const translations = {
     
     // About
     'about.title': 'About',
-    'about.content': "I'm Romain Barrau, Real Estate consultant at Seed Real Estate, a fast-growing international agency based in Lisbon.\n\nToday, I help investors and families navigate real estate in Portugal with confidence, combining strategic thinking, creativity, and passion.\n\nI'm passionate about real estate because it goes far beyond bricks and numbers—it creates stability, comfort, and meaning in people's lives. My goal is to be an active partner in making my clients' projects come true.\n\nOriginally from France, I've studied and worked across the UK, Hong Kong, Amsterdam, and Paris before choosing Lisbon as my home base. This international path gives me a global mindset and a unique perspective on the Portuguese market.",
+    'about.content': "I'm Romain Barrau, Real Estate advisor at IAD France, the network of independent real estate advisors.\n\nToday, I help investors and families navigate real estate in Portugal with confidence, combining strategic thinking, creativity, and passion.\n\nI'm passionate about real estate because it goes far beyond bricks and numbers—it creates stability, comfort, and meaning in people's lives. My goal is to be an active partner in making my clients' projects come true.\n\nOriginally from France, I've studied and worked across the UK, Hong Kong, Amsterdam, and Paris before choosing Lisbon as my home base. This international path gives me a global mindset and a unique perspective on the Portuguese market.",
     'about.timeline.title': 'Timeline',
     
     // Contact

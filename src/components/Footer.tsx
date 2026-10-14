@@ -22,7 +22,7 @@ const Footer = () => {
             <h4 className="font-display font-semibold mb-4 text-foreground">{t('nav.contact')}</h4>
             <div className="space-y-2 text-foreground/80">
               <p>romain.barrau@iadfrance.fr</p>
-              <p>Seed Real Estate Lisbon</p>
+              <p>IAD France</p>
             </div>
           </div>
 
@@ -67,7 +67,7 @@ const Footer = () => {
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-foreground/80">
           <p>
             © 2025 Romain Barrau — {t('footer.rights')} |{' '}
-            Seed Real Estate Lisbon | {t('footer.designed')} Lovable
+            IAD France | {t('footer.designed')} Lovable
           </p>
         </div>
       </div>
