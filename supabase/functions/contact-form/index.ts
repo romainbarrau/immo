@@ -5,6 +5,9 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+const escapeHtml = (value: string) =>
+  value.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+
 serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -13,59 +16,64 @@ serve(async (req) => {
 
   try {
     const { name, email, message } = await req.json();
-    
-    console.log("Received contact form submission:", { name, email });
 
-    // Get webhook URL from environment
-    const webhookUrl = Deno.env.get('N8N_WEBHOOK_URL');
-    
-    if (!webhookUrl) {
-      console.error("N8N_WEBHOOK_URL not configured");
+    if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string' ||
+        !name.trim() || !email.trim() || !message.trim()) {
       return new Response(
-        JSON.stringify({ error: 'Webhook not configured' }), 
-        { 
-          status: 500,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        }
+        JSON.stringify({ error: 'Missing name, email or message' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    // Send data to N8N webhook
-    const webhookResponse = await fetch(webhookUrl, {
+    console.log("Received contact form submission:", { name, email });
+
+    // Messages are emailed to Romain through Resend
+    const apiKey = Deno.env.get('RESEND_API_KEY');
+    const to = Deno.env.get('CONTACT_TO_EMAIL');
+
+    if (!apiKey || !to) {
+      console.error("RESEND_API_KEY or CONTACT_TO_EMAIL not configured");
+      return new Response(
+        JSON.stringify({ error: 'Email not configured' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name,
-        email,
-        message,
-        timestamp: new Date().toISOString(),
-        source: 'Contact Form - Romain Barrau Real Estate',
+        from: 'Site Romain Barrau <onboarding@resend.dev>',
+        to: [to],
+        reply_to: email,
+        subject: `Nouveau message du site - ${name}`.slice(0, 200),
+        html: `<p><strong>Nom :</strong> ${escapeHtml(name)}</p>
+<p><strong>E-mail :</strong> ${escapeHtml(email)}</p>
+<p><strong>Message :</strong></p>
+<p style="white-space: pre-wrap">${escapeHtml(message)}</p>
+<hr><p style="color:#888">Envoyé depuis le formulaire de contact - Romain Barrau Real Estate - ${new Date().toISOString()}</p>`,
       }),
     });
 
-    console.log("N8N webhook response status:", webhookResponse.status);
+    console.log("Resend response status:", resendResponse.status);
 
-    if (!webhookResponse.ok) {
-      throw new Error(`Webhook responded with status: ${webhookResponse.status}`);
+    if (!resendResponse.ok) {
+      throw new Error(`Resend responded with status: ${resendResponse.status} ${await resendResponse.text()}`);
     }
 
     return new Response(
       JSON.stringify({ success: true, message: 'Form submitted successfully' }),
-      { 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      }
+      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
 
   } catch (error) {
     console.error('Error in contact-form function:', error);
     return new Response(
       JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }),
-      { 
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      }
+      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
 });
