@@ -66,8 +66,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-foreground/80">
           <p>
-            © 2025 Romain Barrau — {t('footer.rights')} |{' '}
-            IAD France | {t('footer.designed')} Lovable
+            © {new Date().getFullYear()} Romain Barrau — {t('footer.rights')} | IAD France
           </p>
         </div>
       </div>
