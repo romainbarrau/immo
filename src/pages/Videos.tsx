@@ -51,13 +51,10 @@ const Videos = () => {
       
       <div className="container mx-auto px-4 md:px-6 py-20 pt-32">
         <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-5xl md:text-6xl font-display font-bold mb-4 text-foreground">
+          <h1 className="text-5xl md:text-6xl font-display font-medium text-foreground">
             {t('videos.title')}
           </h1>
-          <p className="text-2xl font-display text-foreground mb-4">
-            {t('videos.subtitle')}
-          </p>
-          <p className="text-lg text-foreground/90 max-w-2xl mx-auto">
+          <p className="mt-3 text-lg text-muted-foreground max-w-2xl mx-auto">
             {t('videos.description')}
           </p>
         </div>

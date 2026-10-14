@@ -22,7 +22,7 @@ const PropertiesCarousel = () => {
       <section className="py-12 px-4 md:px-8 lg:px-12 bg-background">
         <div className="container mx-auto max-w-7xl">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-display text-foreground">
+            <h2 className="text-3xl md:text-4xl font-display font-medium text-foreground">
               {language === 'en' ? 'Our Properties' : 'Nos Propriétés'}
             </h2>
           </div>
@@ -44,12 +44,12 @@ const PropertiesCarousel = () => {
     <section className="py-8 md:py-12 px-4 md:px-8 lg:px-12 bg-background">
       <div className="container mx-auto max-w-7xl">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-display text-foreground">
-            {language === 'en' ? 'Properties' : 'Propriétés'}
+          <h2 className="text-3xl md:text-4xl font-display font-medium text-foreground">
+            {language === 'en' ? 'Properties for Sale' : 'Biens en vente'}
           </h2>
           <Button 
             variant="ghost" 
-            className="group"
+            className="group text-accent-warm hover:text-accent-warm hover:bg-transparent"
             onClick={() => window.location.href = `${import.meta.env.BASE_URL}listings`}
           >
             {language === 'en' ? 'View All' : 'Voir Tout'}

@@ -26,11 +26,11 @@ const TestimonialsCarousel = () => {
   return (
     <section className="py-8 md:py-12 bg-background">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-display font-medium text-foreground">
             {t('home.testimonials.title')}
           </h2>
-          <p className="text-base md:text-lg text-foreground/90 max-w-2xl mx-auto">
+          <p className="mt-2 text-sm text-muted-foreground max-w-2xl mx-auto">
             {t('home.testimonials.subtitle')}
           </p>
         </div>
@@ -53,28 +53,28 @@ const TestimonialsCarousel = () => {
               const isExpanded = expandedId === testimonial.id;
               return (
                 <CarouselItem key={testimonial.id} className="pl-4 md:pl-6 basis-[90%] sm:basis-[80%] md:basis-1/2 lg:basis-1/3">
-                  <Card className="p-6 md:p-8 h-full bg-background/60 border-foreground/20 hover:border-foreground/40 hover:shadow-xl transition-all duration-300 flex flex-col">
+                  <Card className="p-6 h-full bg-background/60 border-foreground/20 hover:border-foreground/40 hover:shadow-xl transition-all duration-300 flex flex-col">
                     <div className="flex gap-1 mb-4 md:mb-6">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 md:h-5 md:w-5 fill-foreground text-foreground" />
+                        <Star key={i} className="h-4 w-4 fill-accent-warm text-accent-warm" />
                       ))}
                     </div>
                     
-                    <p className={`text-sm md:text-base text-foreground/90 leading-relaxed mb-4 md:mb-6 flex-grow ${!isExpanded ? 'line-clamp-6' : ''}`}>
+                    <p className={`text-base text-foreground/90 leading-relaxed mb-4 md:mb-6 flex-grow ${!isExpanded ? 'line-clamp-5' : ''}`}>
                       {t(`home.testimonials.review${testimonial.id}`)}
                     </p>
 
-                    <div className="space-y-3 md:space-y-4 mt-auto pt-3 md:pt-4 border-t border-border/40">
-                      <p className="font-semibold text-foreground text-base md:text-lg">
+                    <div className="mt-auto border-t border-border/40">
+                      <p className="mt-4 font-medium text-foreground text-base">
                         {testimonial.name}
                       </p>
                       
-                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 md:gap-3">
+                      <div className="mt-3 flex flex-row items-center gap-4">
                         <Button
                           variant="ghost"
                           size="sm"
                           onClick={() => setExpandedId(isExpanded ? null : testimonial.id)}
-                          className="text-xs text-muted-foreground hover:text-foreground w-full sm:w-auto justify-start sm:justify-center"
+                          className="h-auto p-0 text-xs text-muted-foreground hover:text-foreground hover:bg-transparent"
                         >
                           {isExpanded ? (
                             <>
@@ -93,7 +93,7 @@ const TestimonialsCarousel = () => {
                           variant="ghost"
                           size="sm"
                           asChild
-                          className="text-xs text-muted-foreground hover:text-foreground w-full sm:w-auto justify-start sm:justify-center"
+                          className="h-auto p-0 text-xs text-muted-foreground hover:text-foreground hover:bg-transparent"
                         >
                           <a href={testimonial.url} target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="h-3 w-3 mr-1" />
@@ -111,7 +111,7 @@ const TestimonialsCarousel = () => {
           <CarouselNext className="hidden md:flex -right-12" />
         </Carousel>
 
-        <p className="text-center text-xs md:text-sm text-muted-foreground mt-8 md:mt-12">
+        <p className="md:hidden text-center text-xs md:text-sm text-muted-foreground mt-8 md:mt-12">
           {t('home.testimonials.swipe')}
         </p>
       </div>

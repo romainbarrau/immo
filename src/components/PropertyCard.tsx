@@ -1,5 +1,5 @@
 import { Card } from '@/components/ui/card';
-import { MapPin, Euro } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface PropertyCardProps {
@@ -8,10 +8,11 @@ interface PropertyCardProps {
   location: string;
   price: string;
   sold?: boolean;
+  soldLabel?: boolean;
   onClick?: () => void;
 }
 
-const PropertyCard = ({ image, title, location, price, sold, onClick }: PropertyCardProps) => {
+const PropertyCard = ({ image, title, location, price, sold, soldLabel, onClick }: PropertyCardProps) => {
   const { t } = useLanguage();
 
   return (
@@ -25,6 +26,11 @@ const PropertyCard = ({ image, title, location, price, sold, onClick }: Property
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
+        {soldLabel && (
+          <span className="absolute top-3 left-3 z-10 rounded-sm bg-primary px-2 py-1 text-xs uppercase tracking-wide text-primary-foreground">
+            {t('sold.label')}
+          </span>
+        )}
         {sold && (
           <div className="absolute inset-0 bg-foreground/60 flex items-center justify-center">
             <span className="text-background text-3xl font-display font-bold">{t('sold.badge')}</span>
@@ -32,14 +38,13 @@ const PropertyCard = ({ image, title, location, price, sold, onClick }: Property
         )}
       </div>
       <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-xl font-display font-semibold mb-2 text-foreground">{title}</h3>
+        <h3 className="text-xl font-display font-medium mb-2 text-foreground">{title}</h3>
         <div className="flex items-center text-foreground/80 mb-3">
-          <MapPin className="h-4 w-4 mr-1" />
+          <MapPin className="h-4 w-4 mr-1 text-accent-warm" />
           <span className="text-sm">{location}</span>
         </div>
         <div className="flex items-center text-foreground font-semibold text-lg mt-auto">
-          <Euro className="h-5 w-5 mr-1" />
-          <span>{price}</span>
+          <span>{price}{'\u00A0'}€</span>
         </div>
       </div>
     </Card>

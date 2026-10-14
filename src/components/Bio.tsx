@@ -23,10 +23,13 @@ const Bio = () => {
               src={romainHero}
               alt="Romain Barrau"
               loading="lazy"
-              className="absolute z-10 object-contain w-[108%] -bottom-[46px] left-1/2 -translate-x-1/2"
+              className="absolute z-10 object-contain w-[108%] bottom-0 left-1/2 -translate-x-1/2"
             />
           </div>
           <div className="flex flex-col justify-center">
+            <h2 className="font-display font-medium text-3xl md:text-4xl text-foreground mb-6">
+              {t('bio.title')}
+            </h2>
             <div className="space-y-6 font-sans text-base leading-relaxed text-foreground">
               {t('bio.content').split('\n\n').map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>

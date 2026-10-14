@@ -34,7 +34,7 @@ const About = () => {
               <img
                 src={romainHero}
                 alt="Romain Barrau"
-                className="absolute z-10 object-contain w-[108%] -bottom-[46px] left-1/2 -translate-x-1/2"
+                className="absolute z-10 object-contain w-[108%] bottom-0 left-1/2 -translate-x-1/2"
               />
             </div>
             <div className="flex flex-col justify-center">

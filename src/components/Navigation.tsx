@@ -21,17 +21,14 @@ const Navigation = () => {
       className="fixed top-0 left-0 right-0 z-50 translate-y-0 opacity-100 bg-background/95 backdrop-blur-lg shadow-[0_1px_0_0_hsl(var(--border))] transition-all duration-700"
     >
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <Link
             to="/"
             className="group flex flex-col leading-none transition-opacity hover:opacity-70"
           >
-            <span className="text-3xl font-display font-medium tracking-tight">
+            <span className="text-xl font-display font-medium tracking-tight">
               Romain Barrau
-            </span>
-            <span className="text-sm text-muted-foreground font-sans font-medium uppercase tracking-widest mt-1">
-              {t('brand.subtitle')}
             </span>
           </Link>
 
@@ -42,7 +39,7 @@ const Navigation = () => {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  "font-sans text-sm transition-colors hover:text-foreground",
+                  "font-sans text-sm transition-colors hover:text-accent-warm",
                   location.pathname === item.path ? 'text-foreground' : 'text-muted-foreground'
                 )}
               >
@@ -75,7 +72,7 @@ const Navigation = () => {
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
                   className={cn(
-                    "px-4 py-3 font-sans text-sm transition-colors hover:text-foreground",
+                    "px-4 py-3 font-sans text-sm transition-colors hover:text-accent-warm",
                     location.pathname === item.path ? 'text-foreground' : 'text-muted-foreground'
                   )}
                 >

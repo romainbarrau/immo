@@ -37,12 +37,12 @@ const translations = {
     'home.dream.entrepreneur': 'entrepreneur',
     'home.dream.description': 'Animé par l\'architecture, les histoires et les gens, j\'aide mes clients à acheter, vendre et investir dans des propriétés significatives à Bordeaux et dans sa région. Mon objectif : rendre chaque parcours immobilier transparent, personnel et inspirant.',
     'home.dream.cta': 'Me contacter',
-    'home.inclusions.title': 'Notre univers',
+    'home.inclusions.title': 'Mon univers',
     'home.inclusions.creative': 'créatif',
     'home.inclusions.title2': '',
     'home.inclusions.description1': 'Nous racontons des histoires de maisons, de villes et de rêves à travers le film.',
     'home.inclusions.description2': 'Chaque vidéo est conçue pour inspirer, connecter et donner vie à notre vision de l\'immobilier.',
-    'home.inclusions.cta': 'Voir nos films',
+    'home.inclusions.cta': 'Voir mes films',
     'home.cta.properties': 'Propriétés',
     'home.cta.reviews': 'Avis',
     'home.cta.videos': 'Vidéos',
@@ -67,13 +67,19 @@ const translations = {
     'home.testimonials.review10': 'Agence très professionnelle et super sympa - un merci spécial à Romain Barrau pour toute l\'aide et le travail acharné mis dans la vente de notre appartement !',
     
     // Listings
-    'listings.title': 'Biens en vente',
+    'listings.title': 'Propriétés',
     'listings.subtitle': 'Découvrez une sélection de propriétés exceptionnelles',
     
     // Sold
     'sold.title': 'Biens vendus',
     'sold.subtitle': 'Mes récentes réussites',
     'sold.badge': 'VENDU',
+    'sold.label': 'Vendu',
+    'listings.forSale': 'Biens en vente',
+    'listings.sold': 'Biens vendus',
+    'listings.empty': 'De nouveaux biens arrivent bientôt.',
+    'listings.emptyCta': 'Contactez-moi',
+    'listings.emptyEnd': 'pour en savoir plus.',
     
     // Videos
     'videos.title': 'Vidéos',
@@ -96,6 +102,7 @@ const translations = {
     'about.title': 'À propos',
     'about.content': "Je suis Romain Barrau, conseiller immobilier chez IAD France, le réseau de conseillers immobiliers indépendants.\n\nDe retour à Bordeaux, j’aide les familles et les investisseurs à naviguer dans l’immobilier en toute confiance, en combinant réflexion stratégique, créativité et passion.\n\nJe suis passionné par l’immobilier car il va bien au-delà des briques et des chiffres : il crée stabilité, confort et sens dans la vie des gens. Mon objectif est d’être un partenaire actif dans la réalisation des projets de mes clients.\n\nOriginaire de France, j’ai étudié et vécu à Bordeaux avant de travailler au Royaume-Uni, à Hong Kong, à Amsterdam, à Paris, puis à Lisbonne. Ce parcours international me donne une vision globale et une perspective unique, que je mets aujourd’hui au service du marché bordelais.",
     'about.timeline.title': 'Parcours',
+    'bio.title': 'Un retour à Bordeaux',
     'bio.content': "De retour à Bordeaux, où j'ai étudié et vécu, j'aide les familles et les investisseurs à vendre ou acheter en toute confiance, à Bordeaux ou à distance.\n\nAvant cela, j'ai travaillé au Royaume-Uni, à Hong Kong, à Amsterdam, à Paris, puis à Lisbonne. Ce parcours international me donne une vision globale que je mets aujourd'hui au service du marché bordelais.\n\nL'immobilier va bien au-delà des briques et des chiffres : il crée stabilité, confort et sens dans la vie des gens. Mon objectif est d'être un partenaire actif dans la réalisation de vos projets.",
     
     // Contact
@@ -171,12 +178,12 @@ const translations = {
     'home.dream.entrepreneur': 'entrepreneur',
     'home.dream.description': 'Driven by architecture, stories, and people, I help clients buy, sell, and invest in meaningful properties in Bordeaux and the surrounding area. My goal: make every real estate journey transparent, personal, and inspiring.',
     'home.dream.cta': 'Get in touch',
-    'home.inclusions.title': 'Our',
+    'home.inclusions.title': 'My',
     'home.inclusions.creative': 'creative',
     'home.inclusions.title2': 'universe',
     'home.inclusions.description1': 'We tell stories of homes, cities, and dreams through film.',
     'home.inclusions.description2': 'Each video is crafted to inspire, connect, and bring our vision of real estate to life.',
-    'home.inclusions.cta': 'View our films',
+    'home.inclusions.cta': 'View my films',
     'home.cta.properties': 'Properties',
     'home.cta.reviews': 'Reviews',
     'home.cta.videos': 'Videos',
@@ -201,13 +208,19 @@ const translations = {
     'home.testimonials.review10': 'Very professional and super friendly agency - a special thanks to Romain Barrau for all the help and hard work put into selling our apartment!',
     
     // Listings
-    'listings.title': 'Active Listings',
+    'listings.title': 'Properties',
     'listings.subtitle': 'Discover exceptional properties',
     
     // Sold
     'sold.title': 'Sold Properties',
     'sold.subtitle': 'Recent Successes',
     'sold.badge': 'SOLD',
+    'sold.label': 'Sold',
+    'listings.forSale': 'Properties for Sale',
+    'listings.sold': 'Sold Properties',
+    'listings.empty': 'New properties are coming soon.',
+    'listings.emptyCta': 'Contact me',
+    'listings.emptyEnd': 'to find out more.',
     
     // Videos
     'videos.title': 'Videos',
@@ -230,6 +243,7 @@ const translations = {
     'about.title': 'About',
     'about.content': "I'm Romain Barrau, Real Estate advisor at IAD France, the network of independent real estate advisors.\n\nNow back in Bordeaux, I help families and investors navigate real estate with confidence, combining strategic thinking, creativity, and passion.\n\nI'm passionate about real estate because it goes far beyond bricks and numbers—it creates stability, comfort, and meaning in people's lives. My goal is to be an active partner in making my clients' projects come true.\n\nOriginally from France, I studied and lived in Bordeaux before working in the UK, Hong Kong, Amsterdam, Paris, and then Lisbon. This international path gives me a global mindset and a unique perspective, which I now put at the service of the Bordeaux market.",
     'about.timeline.title': 'Timeline',
+    'bio.title': 'Back to Bordeaux',
     'bio.content': "Back in Bordeaux, where I studied and lived, I help families and investors sell or buy with confidence, in Bordeaux or remotely.\n\nBefore that, I worked in the UK, Hong Kong, Amsterdam, Paris, and then Lisbon. This international path gives me a global perspective that I now put at the service of the Bordeaux market.\n\nReal estate goes far beyond bricks and numbers: it creates stability, comfort, and meaning in people's lives. My goal is to be an active partner in making your projects happen.",
     
     // Contact
