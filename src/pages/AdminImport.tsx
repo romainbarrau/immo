@@ -90,7 +90,7 @@ const AdminImport = () => {
     <div className="min-h-screen bg-background p-8">
       <div className="max-w-4xl mx-auto space-y-8">
         <div>
-          <h1 className="text-3xl font-serif">Import de propriétés</h1>
+          <h1 className="text-3xl font-bold">Import de propriétés</h1>
           <p className="text-muted-foreground mt-2">
             Collez les URLs des propriétés depuis seedrealestate.pt (une par ligne)
           </p>
@@ -133,7 +133,7 @@ const AdminImport = () => {
 
           {results.length > 0 && (
             <div className="border rounded-lg p-4 space-y-3">
-              <h3 className="font-sans font-medium">Résultats de l'import</h3>
+              <h3 className="font-semibold">Résultats de l'import</h3>
               <div className="space-y-2">
                 {results.map((result, index) => (
                   <div

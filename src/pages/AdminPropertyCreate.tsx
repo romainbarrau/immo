@@ -144,7 +144,7 @@ const AdminPropertyCreate = () => {
               Retour
             </Button>
 
-            <h1 className="text-3xl text-foreground mb-2 font-serif">Créer une propriété</h1>
+            <h1 className="text-3xl font-bold text-foreground mb-2">Créer une propriété</h1>
             <p className="text-muted-foreground mb-8">
               Remplissez le formulaire pour ajouter une nouvelle propriété
             </p>
@@ -152,7 +152,7 @@ const AdminPropertyCreate = () => {
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Basic Information */}
               <div className="bg-card p-6 rounded-lg border space-y-4">
-                <h2 className="text-xl text-foreground font-sans font-medium">Informations de base</h2>
+                <h2 className="text-xl font-semibold text-foreground">Informations de base</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -211,7 +211,7 @@ const AdminPropertyCreate = () => {
 
               {/* Title and Location */}
               <div className="bg-card p-6 rounded-lg border space-y-4">
-                <h2 className="text-xl text-foreground font-sans font-medium">Titre et Localisation</h2>
+                <h2 className="text-xl font-semibold text-foreground">Titre et Localisation</h2>
                 
                 <div>
                   <Label htmlFor="title_fr" className="text-foreground">Titre (FR) *</Label>
@@ -257,7 +257,7 @@ const AdminPropertyCreate = () => {
 
               {/* Details */}
               <div className="bg-card p-6 rounded-lg border space-y-4">
-                <h2 className="text-xl text-foreground font-sans font-medium">Détails</h2>
+                <h2 className="text-xl font-semibold text-foreground">Détails</h2>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div>
@@ -318,7 +318,7 @@ const AdminPropertyCreate = () => {
 
               {/* Description */}
               <div className="bg-card p-6 rounded-lg border space-y-4">
-                <h2 className="text-xl text-foreground font-sans font-medium">Description</h2>
+                <h2 className="text-xl font-semibold text-foreground">Description</h2>
                 
                 <div>
                   <Label htmlFor="description_fr" className="text-foreground">Description (FR)</Label>
@@ -345,7 +345,7 @@ const AdminPropertyCreate = () => {
 
               {/* Images */}
               <div className="bg-card p-6 rounded-lg border space-y-4">
-                <h2 className="text-xl text-foreground font-sans font-medium">Photos</h2>
+                <h2 className="text-xl font-semibold text-foreground">Photos</h2>
                 <ImageUploadWithSort images={images} onImagesChange={setImages} />
               </div>
 

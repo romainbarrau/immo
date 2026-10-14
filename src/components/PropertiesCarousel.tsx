@@ -12,19 +12,17 @@ import Autoplay from 'embla-carousel-autoplay';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
 
 const PropertiesCarousel = () => {
   const { t, language } = useLanguage();
   const { data: properties, isLoading } = useProperties('available');
-  const navigate = useNavigate();
 
   if (isLoading) {
     return (
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container max-w-7xl">
+      <section className="py-12 px-4 md:px-8 lg:px-12 bg-background">
+        <div className="container mx-auto max-w-7xl">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl md:text-5xl font-serif leading-tight text-foreground">
+            <h2 className="text-3xl md:text-4xl font-display text-foreground">
               {language === 'en' ? 'Our Properties' : 'Nos Propriétés'}
             </h2>
           </div>
@@ -43,17 +41,19 @@ const PropertiesCarousel = () => {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container max-w-7xl">
+    <section className="py-8 md:py-12 px-4 md:px-8 lg:px-12 bg-background">
+      <div className="container mx-auto max-w-7xl">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl md:text-5xl font-serif leading-tight text-foreground">
+          <h2 className="text-3xl md:text-4xl font-display text-foreground">
             {language === 'en' ? 'Featured Properties' : 'Propriétés en Vedette'}
           </h2>
-          <Button asChild variant="ghost" className="group">
-            <Link to="/listings">
-              {language === 'en' ? 'View All' : 'Voir Tout'}
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-            </Link>
+          <Button 
+            variant="ghost" 
+            className="group"
+            onClick={() => window.location.href = `${import.meta.env.BASE_URL}listings`}
+          >
+            {language === 'en' ? 'View All' : 'Voir Tout'}
+            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
         
@@ -79,7 +79,7 @@ const PropertiesCarousel = () => {
                   location={language === 'en' ? property.location_en : property.location_fr}
                   price={new Intl.NumberFormat('fr-FR').format(property.price)}
                   sold={property.status === 'sold'}
-                  onClick={() => navigate(`/listings/${property.id}`)}
+                  onClick={() => window.location.href = `${import.meta.env.BASE_URL}listing/${property.id}`}
                 />
               </CarouselItem>
             ))}

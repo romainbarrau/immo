@@ -119,7 +119,7 @@ const AdminUpload = () => {
     <div className="min-h-screen bg-background p-8">
       <div className="max-w-2xl mx-auto space-y-8">
         <div>
-          <h1 className="text-3xl font-serif">Upload de photos</h1>
+          <h1 className="text-3xl font-bold">Upload de photos</h1>
           <p className="text-muted-foreground mt-2">
             Sélectionnez une propriété et uploadez les photos
           </p>

@@ -116,10 +116,10 @@ const VideoSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container max-w-7xl">
+    <section className="py-8 md:py-12 px-4 md:px-8 lg:px-12 bg-background">
+      <div className="container mx-auto max-w-7xl">
         <div 
-          className="relative rounded-lg overflow-hidden shadow-2xl"
+          className="relative rounded-[1.5rem] md:rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -131,7 +131,7 @@ const VideoSection = () => {
           <Button
             onClick={toggleMute}
             size="lg"
-            className={`absolute top-4 right-4 z-10 bg-background/80 text-foreground hover:bg-background/90 shadow-2xl font-semibold rounded-lg backdrop-blur-sm border border-border/20 transition-opacity duration-500 ${
+            className={`absolute top-4 right-4 z-10 bg-background/80 text-foreground hover:bg-background/90 shadow-2xl font-semibold rounded-[1.5rem] backdrop-blur-sm border border-border/20 transition-opacity duration-500 ${
               isLocked ? 'md:opacity-100 opacity-0 pointer-events-none md:pointer-events-auto' : 'opacity-100'
             }`}
           >

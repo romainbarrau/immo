@@ -26,7 +26,7 @@ const ProtectedRoute = ({ children, requireAdmin = false }: ProtectedRouteProps)
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-foreground text-center">
-          <h1 className="text-2xl mb-4 font-serif">Access Denied</h1>
+          <h1 className="text-2xl font-bold mb-4">Access Denied</h1>
           <p>You don't have permission to access this page.</p>
         </div>
       </div>

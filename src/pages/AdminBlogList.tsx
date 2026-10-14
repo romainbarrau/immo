@@ -79,7 +79,7 @@ const AdminBlogList = () => {
                 <ArrowLeft className="h-4 w-4" />
               </Button>
             </Link>
-            <h1 className="text-3xl text-foreground font-serif">
+            <h1 className="text-3xl font-display font-bold text-foreground">
               Gestion des Articles
             </h1>
           </div>
@@ -111,7 +111,7 @@ const AdminBlogList = () => {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h2 className="text-xl text-foreground font-sans font-medium">
+                      <h2 className="text-xl font-semibold text-foreground">
                         {article.title_fr}
                       </h2>
                       <Badge variant={article.published ? 'default' : 'secondary'}>

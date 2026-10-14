@@ -119,14 +119,14 @@ const AdminBlogEdit = () => {
               <ArrowLeft className="h-4 w-4" />
             </Button>
           </Link>
-          <h1 className="text-3xl text-foreground font-serif">
+          <h1 className="text-3xl font-display font-bold text-foreground">
             Modifier l'Article
           </h1>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <Card className="p-6 space-y-4">
-            <h2 className="text-xl text-foreground font-sans font-medium">Informations générales</h2>
+            <h2 className="text-xl font-semibold text-foreground">Informations générales</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -160,7 +160,7 @@ const AdminBlogEdit = () => {
           </Card>
 
           <Card className="p-6 space-y-4">
-            <h2 className="text-xl text-foreground font-sans font-medium">🇫🇷 Contenu Français</h2>
+            <h2 className="text-xl font-semibold text-foreground">🇫🇷 Contenu Français</h2>
             
             <div className="space-y-2">
               <Label htmlFor="title_fr">Titre *</Label>
@@ -196,7 +196,7 @@ const AdminBlogEdit = () => {
           </Card>
 
           <Card className="p-6 space-y-4">
-            <h2 className="text-xl text-foreground font-sans font-medium">🇬🇧 English Content</h2>
+            <h2 className="text-xl font-semibold text-foreground">🇬🇧 English Content</h2>
             
             <div className="space-y-2">
               <Label htmlFor="title_en">Title *</Label>

@@ -17,7 +17,7 @@ const Listings = () => {
       
       <div className="container mx-auto px-4 md:px-6 py-20 pt-32">
         <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-4xl md:text-6xl font-serif leading-[1.05] tracking-tight mb-4 text-foreground">
+          <h1 className="text-5xl md:text-6xl font-display font-bold mb-4 text-foreground">
             {t('listings.title')}
           </h1>
           <p className="text-xl text-foreground/90">

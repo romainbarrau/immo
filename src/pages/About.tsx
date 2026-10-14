@@ -17,7 +17,7 @@ const About = () => {
       <div className="container mx-auto px-4 md:px-6 py-20 pt-32">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
-            <h1 className="text-4xl md:text-6xl font-serif leading-[1.05] tracking-tight mb-4 text-foreground">
+            <h1 className="text-5xl md:text-6xl font-display font-bold mb-4 text-foreground">
               {t('about.title')}
             </h1>
           </div>

@@ -7,8 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { CheckCircle2, Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react';
-import { EMAIL, INSTAGRAM_URL, LINKEDIN_URL, WHATSAPP_URL } from '@/config/site';
+import { Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
@@ -20,13 +19,11 @@ const Contact = () => {
     message: '',
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [isSent, setIsSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     setIsLoading(true);
-    setIsSent(false);
     console.log("Submitting contact form");
 
     try {
@@ -40,7 +37,11 @@ const Contact = () => {
 
       if (error) throw error;
 
-      setIsSent(true);
+      toast({
+        title: t('contact.success'),
+        description: "Your message has been sent successfully!",
+      });
+      
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -58,10 +59,10 @@ const Contact = () => {
     <div className="min-h-screen">
       <Navigation />
       
-      <div className="container pt-32 pb-16 md:pt-36 md:pb-24">
+      <div className="container mx-auto px-4 md:px-6 py-20 pt-32">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
-            <h1 className="text-4xl md:text-6xl font-serif leading-[1.05] tracking-tight mb-4 text-foreground">
+            <h1 className="text-5xl md:text-6xl font-display font-bold mb-4 text-foreground">
               {t('contact.title')}
             </h1>
             <p className="text-xl text-foreground/90">
@@ -74,26 +75,22 @@ const Contact = () => {
             <Card className="p-8 animate-slide-up">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="contact-name" className="block text-sm font-medium mb-2">
+                  <label className="block text-sm font-medium mb-2">
                     {t('contact.name')}
                   </label>
                   <Input
-                    id="contact-name"
                     required
-                    className="rounded-sm"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label htmlFor="contact-email" className="block text-sm font-medium mb-2">
+                  <label className="block text-sm font-medium mb-2">
                     {t('contact.email')}
                   </label>
                   <Input
-                    id="contact-email"
                     required
-                    className="rounded-sm"
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -101,75 +98,65 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="contact-message" className="block text-sm font-medium mb-2">
+                  <label className="block text-sm font-medium mb-2">
                     {t('contact.message')}
                   </label>
                   <Textarea
-                    id="contact-message"
                     required
-                    className="rounded-sm"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Your message..."
                     rows={6}
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={isLoading}>
+                <Button type="submit" size="lg" className="w-full" disabled={isLoading}>
                   {isLoading ? 'Sending...' : t('contact.send')}
                 </Button>
-                {isSent && (
-                  <p role="status" className="flex items-center gap-2 rounded-sm bg-secondary px-4 py-3 text-sm font-medium text-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-accent shrink-0" aria-hidden="true" />
-                    {t('contact.success')}
-                  </p>
-                )}
               </form>
             </Card>
 
             {/* Contact Info */}
             <div className="space-y-8 animate-slide-up" style={{animationDelay: '0.2s'}}>
               <Card className="p-8">
-                <h3 className="text-xl md:text-2xl font-sans font-medium mb-6">Get in Touch</h3>
+                <h3 className="font-display font-semibold text-xl mb-6">Get in Touch</h3>
                 <div className="space-y-4">
                   <a
-                    href={`mailto:${EMAIL}`}
+                    href="mailto:romain@seedrealestate.pt"
                     className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                   >
-                    <Mail className="h-5 w-5" aria-hidden="true" />
-                    <span>{EMAIL}</span>
+                    <Mail className="h-5 w-5" />
+                    <span>romain@seedrealestate.pt</span>
                   </a>
                   <a
-                    href={WHATSAPP_URL}
+                    href="https://wa.me/351912345678"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                   >
-                    <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                    <MessageCircle className="h-5 w-5" />
                     <span>WhatsApp</span>
                   </a>
                 </div>
               </Card>
 
               <Card className="p-8">
-                <h3 className="text-xl md:text-2xl font-sans font-medium mb-6">Follow Me</h3>
+                <h3 className="font-display font-semibold text-xl mb-6">Follow Me</h3>
                 <div className="flex gap-4">
                   <a
-                    href={INSTAGRAM_URL}
-                    aria-label="Instagram"
+                    href="https://instagram.com/romainbarrau"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors"
                   >
-                    <Instagram className="h-5 w-5" aria-hidden="true" />
+                    <Instagram className="h-5 w-5" />
                   </a>
                   <a
-                    href={LINKEDIN_URL}
-                    aria-label="LinkedIn"
+                    href="https://linkedin.com/in/romainbarrau"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors"
                   >
-                    <Linkedin className="h-5 w-5" aria-hidden="true" />
+                    <Linkedin className="h-5 w-5" />
                   </a>
                 </div>
               </Card>

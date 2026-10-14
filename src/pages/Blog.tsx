@@ -33,7 +33,7 @@ const Blog = () => {
       
       <div className="container mx-auto px-4 md:px-6 py-20 pt-32">
         <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-4xl md:text-6xl font-serif leading-[1.05] tracking-tight mb-4 text-foreground">
+          <h1 className="text-5xl md:text-6xl font-display font-bold mb-4 text-foreground">
             {t('blog.title')}
           </h1>
           <p className="text-xl text-foreground/90">
@@ -70,7 +70,7 @@ const Blog = () => {
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="flex items-center justify-between">
-                      <h2 className="text-xl md:text-2xl font-sans font-medium text-foreground group-hover:text-primary transition-colors">
+                      <h2 className="text-xl md:text-2xl font-display font-bold text-foreground group-hover:text-primary transition-colors">
                         {title}
                       </h2>
                       <ArrowRight className="h-5 w-5 text-foreground/50 group-hover:text-primary group-hover:translate-x-1 transition-all" />

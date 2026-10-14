@@ -205,12 +205,12 @@ const AdminPropertyEdit = () => {
             Retour à la liste
           </Button>
 
-          <h1 className="text-3xl mb-8 font-serif">Modifier la propriété</h1>
+          <h1 className="text-3xl font-bold mb-8">Modifier la propriété</h1>
 
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Basic Info */}
             <div className="space-y-4">
-              <h2 className="text-xl font-sans font-medium">Informations de base</h2>
+              <h2 className="text-xl font-semibold">Informations de base</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="reference">Référence *</Label>
@@ -236,7 +236,7 @@ const AdminPropertyEdit = () => {
 
             {/* Title & Location */}
             <div className="space-y-4">
-              <h2 className="text-xl font-sans font-medium">Titre et localisation</h2>
+              <h2 className="text-xl font-semibold">Titre et localisation</h2>
               <div className="space-y-4">
                 <div>
                   <Label htmlFor="title_fr">Titre (FR) *</Label>
@@ -277,7 +277,7 @@ const AdminPropertyEdit = () => {
 
             {/* Details */}
             <div className="space-y-4">
-              <h2 className="text-xl font-sans font-medium">Détails</h2>
+              <h2 className="text-xl font-semibold">Détails</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
                   <Label htmlFor="bedrooms">Chambres</Label>
@@ -349,7 +349,7 @@ const AdminPropertyEdit = () => {
 
             {/* Description */}
             <div className="space-y-4">
-              <h2 className="text-xl font-sans font-medium">Description</h2>
+              <h2 className="text-xl font-semibold">Description</h2>
               <div>
                 <Label htmlFor="description_fr">Description (FR)</Label>
                 <Textarea
@@ -372,7 +372,7 @@ const AdminPropertyEdit = () => {
 
             {/* Video */}
             <div className="space-y-4">
-              <h2 className="text-xl font-sans font-medium">Vidéo</h2>
+              <h2 className="text-xl font-semibold">Vidéo</h2>
               <div>
                 <Label htmlFor="video_url">URL de la vidéo (optionnel)</Label>
                 <Input
@@ -387,7 +387,7 @@ const AdminPropertyEdit = () => {
 
             {/* Images */}
             <div className="space-y-4">
-              <h2 className="text-xl font-sans font-medium">Images</h2>
+              <h2 className="text-xl font-semibold">Images</h2>
               <ImageUploadWithSort images={images} onImagesChange={setImages} />
             </div>
 

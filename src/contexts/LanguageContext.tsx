@@ -19,9 +19,6 @@ const translations = {
     'nav.blog': 'Articles',
     'nav.about': 'À propos',
     'nav.contact': 'Contact',
-    // TODO-P2: provisional accessibility labels
-    'nav.menuOpen': 'Ouvrir le menu',
-    'nav.menuClose': 'Fermer le menu',
     
     // Home
     'home.hero.subtitle': 'Créer les espaces de vie de demain',
@@ -121,9 +118,6 @@ const translations = {
     'nav.blog': 'Blog',
     'nav.about': 'About',
     'nav.contact': 'Contact',
-    // TODO-P2: provisional accessibility labels
-    'nav.menuOpen': 'Open menu',
-    'nav.menuClose': 'Close menu',
     
     // Home
     'home.hero.subtitle': 'Crafting Tomorrow\'s Living Spaces',

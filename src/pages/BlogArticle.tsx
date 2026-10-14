@@ -55,7 +55,7 @@ const BlogArticle = () => {
       <div className="min-h-screen">
         <Navigation />
         <div className="container mx-auto px-4 md:px-6 py-20 pt-32 text-center">
-          <h1 className="text-4xl md:text-6xl font-serif leading-[1.05] tracking-tight mb-4 text-foreground">
+          <h1 className="text-3xl font-display font-bold mb-4 text-foreground">
             {language === 'fr' ? 'Article non trouvé' : 'Article not found'}
           </h1>
           <Link to="/blog">
@@ -102,7 +102,7 @@ const BlogArticle = () => {
             </time>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-serif leading-[1.05] tracking-tight mb-8 text-foreground">
+          <h1 className="text-4xl md:text-5xl font-display font-bold mb-8 text-foreground">
             {title}
           </h1>
 

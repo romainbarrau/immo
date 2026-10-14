@@ -24,12 +24,12 @@ const PropertyCard = ({ image, title, location, price, sold, onClick }: Property
         />
         {sold && (
           <div className="absolute inset-0 bg-foreground/60 flex items-center justify-center">
-            <span className="text-background text-3xl font-display">SOLD</span>
+            <span className="text-background text-3xl font-display font-bold">SOLD</span>
           </div>
         )}
       </div>
       <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-xl md:text-2xl font-sans font-medium mb-2 text-foreground">{title}</h3>
+        <h3 className="text-xl font-display font-semibold mb-2 text-foreground">{title}</h3>
         <div className="flex items-center text-foreground/80 mb-3">
           <MapPin className="h-4 w-4 mr-1" />
           <span className="text-sm">{location}</span>

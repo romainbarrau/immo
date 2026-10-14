@@ -42,7 +42,7 @@ const ListingDetail = () => {
     return <div className="min-h-screen">
         <Navigation />
         <div className="container mx-auto px-4 py-20 pt-32 text-center">
-          <h1 className="text-4xl md:text-6xl font-serif leading-[1.05] tracking-tight mb-4 text-foreground">Listing not found</h1>
+          <h1 className="text-4xl font-display font-bold mb-4 text-foreground">Listing not found</h1>
           <Button onClick={() => navigate('/listings')}>Back to Listings</Button>
         </div>
         <Footer />
@@ -78,7 +78,7 @@ const ListingDetail = () => {
               <p className="text-sm text-foreground/80 mb-1">
                 {language === 'fr' ? 'Réf.' : 'Ref.'} {property.reference}
               </p>
-              <h1 className="text-4xl md:text-6xl font-serif leading-[1.05] tracking-tight mb-2 text-foreground">
+              <h1 className="text-4xl font-display font-bold mb-2 text-foreground">
                 {language === 'fr' ? property.title_fr : property.title_en}
               </h1>
               <div className="flex items-center text-foreground/80 mb-4">
@@ -125,7 +125,7 @@ const ListingDetail = () => {
             </Card>
 
             {(property.description_fr || property.description_en) && <div>
-                <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-3 text-foreground">
+                <h2 className="text-2xl font-display font-semibold mb-3 text-foreground">
                   {language === 'fr' ? 'Description' : 'Description'}
                 </h2>
                 <p className="text-foreground/90 leading-relaxed whitespace-pre-line">
@@ -134,7 +134,7 @@ const ListingDetail = () => {
               </div>}
 
             {property.characteristics && Object.keys(property.characteristics).length > 0 && <div>
-                <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-3 text-foreground">
+                <h2 className="text-2xl font-display font-semibold mb-3 text-foreground">
                   {language === 'fr' ? 'Caractéristiques' : 'Features'}
                 </h2>
                 <div className="grid grid-cols-2 gap-3">

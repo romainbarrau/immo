@@ -51,7 +51,7 @@ const Videos = () => {
       
       <div className="container mx-auto px-4 md:px-6 py-20 pt-32">
         <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-4xl md:text-6xl font-serif leading-[1.05] tracking-tight mb-4 text-foreground">
+          <h1 className="text-5xl md:text-6xl font-display font-bold mb-4 text-foreground">
             {t('videos.title')}
           </h1>
           <p className="text-2xl font-display text-foreground mb-4">
@@ -64,7 +64,7 @@ const Videos = () => {
 
         {/* Property Concept Videos */}
         <div className="mb-16">
-          <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-8 text-foreground">Property Concepts</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-foreground">Property Concepts</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {propertyConceptVideos.map((video, index) => (
               <Card 
@@ -90,7 +90,7 @@ const Videos = () => {
 
         {/* The Renovation Series */}
         <div className="mb-16">
-          <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-8 text-foreground">The Renovation</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-foreground">The Renovation</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {renovationSeries.map((video, index) => (
               <Card 
@@ -116,7 +116,7 @@ const Videos = () => {
 
         {/* Property Videos */}
         <div>
-          <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-8 text-foreground">Property Videos</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-foreground">Property Videos</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {propertyVideos.map((video, index) => (
               <Card 

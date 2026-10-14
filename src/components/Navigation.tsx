@@ -3,6 +3,14 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Globe } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
 
 const Navigation = () => {
@@ -15,125 +23,136 @@ const Navigation = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
     };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close the mobile menu on route change, Escape, and lock body scroll while open
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location.pathname, location.hash]);
-
-  useEffect(() => {
-    if (!isMenuOpen) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMenuOpen(false);
-    };
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    document.addEventListener('keydown', onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener('keydown', onKeyDown);
-    };
-  }, [isMenuOpen]);
-
-  // Scroll to in-page anchors such as /#testimonials
-  useEffect(() => {
-    if (!location.hash) return;
-    const id = location.hash.slice(1);
-    const timer = window.setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 50);
-    return () => window.clearTimeout(timer);
-  }, [location.pathname, location.hash]);
-
-  const links = [
-    { to: '/listings', label: t('nav.listings') },
-    { to: '/videos', label: t('nav.videos') },
-    { to: '/#testimonials', label: t('nav.testimonials') },
-    { to: '/about', label: t('nav.about') },
+  const propertyLinks = [
+    { path: '/listings', label: t('nav.listings'), desc: language === 'en' ? 'Current properties for sale' : 'Biens actuellement en vente' },
+    { path: '/sold', label: t('nav.sold'), desc: language === 'en' ? 'Successfully sold properties' : 'Biens vendus avec succès' },
   ];
 
-  const isActive = (to: string) => {
-    if (to.startsWith('/#')) return location.pathname === '/' && location.hash === to.slice(1);
-    return location.pathname === to || location.pathname.startsWith(`${to}/`);
-  };
-
-  // On the homepage, the bar blends into the night-blue hero until the user scrolls
-  const overHero = location.pathname === '/' && !scrolled && !isMenuOpen;
+  const contentLinks = [
+    { path: '/videos', label: t('nav.videos'), desc: language === 'en' ? 'Property tours & stories' : 'Visites et histoires' },
+    { path: '/blog', label: t('nav.blog'), desc: language === 'en' ? 'Insights & market trends' : 'Analyses & tendances' },
+  ];
 
   const toggleLanguage = () => {
     setLanguage(language === 'en' ? 'fr' : 'en');
   };
 
+  const isHomePage = location.pathname === '/';
+
   return (
-    <nav
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 border-b transition-[border-color,background-color,color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]',
-        overHero
-          ? 'bg-transparent border-transparent text-hero-foreground'
-          : 'bg-background border-border text-foreground'
-      )}
+    <nav 
+      className="fixed top-0 left-0 right-0 z-50 translate-y-0 opacity-100 bg-background/95 backdrop-blur-lg shadow-[0_1px_0_0_hsl(var(--border))] transition-all duration-700"
     >
-      <div className="container mx-auto">
-        <div
-          className={cn(
-            'flex items-center justify-between transition-[height] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]',
-            scrolled ? 'h-16' : 'h-20'
-          )}
-        >
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link
-            to="/"
-            className={cn(
-              'group flex flex-col leading-none rounded-sm transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-              overHero && 'focus-visible:ring-offset-hero'
-            )}
+          <Link 
+            to="/" 
+            className="group flex flex-col leading-none transition-opacity hover:opacity-70"
           >
-            <span className="text-2xl md:text-3xl font-display tracking-tight">
+            <span className="text-3xl font-display font-bold tracking-tight">
               Romain Barrau
             </span>
-            <span className={cn('text-xs font-medium tracking-widest uppercase mt-1', overHero ? 'text-hero-foreground/70' : 'text-muted-foreground')}>
+            <span className="text-xs font-medium text-muted-foreground tracking-widest uppercase mt-1">
               Real Estate
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-2">
-            <ul className="flex items-center gap-1">
-              {links.map((item) => (
-                <li key={item.to}>
+          <div className="hidden lg:flex items-center gap-8">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
                   <Link
-                    to={item.to}
-                    aria-current={isActive(item.to) ? 'page' : undefined}
+                    to="/"
                     className={cn(
-                      'relative inline-flex h-10 items-center px-4 text-sm font-medium rounded-sm transition-colors duration-200',
-                      'after:absolute after:left-4 after:right-4 after:bottom-1 after:h-0.5 after:rounded-full after:bg-accent after:transition-opacity after:duration-200',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-                      overHero && 'focus-visible:ring-offset-hero',
-                      isActive(item.to)
-                        ? 'after:opacity-100'
-                        : 'opacity-80 hover:opacity-100 after:opacity-0 hover:after:opacity-60'
+                      "group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:text-primary",
+                      location.pathname === '/' ? 'text-primary' : 'text-foreground'
                     )}
                   >
-                    {item.label}
+                    {t('nav.home')}
                   </Link>
-                </li>
-              ))}
-            </ul>
+                </NavigationMenuItem>
 
-            <Button
-              asChild
-              size="sm"
-              className={cn(
-                'ml-2',
-                overHero
-                  ? 'bg-hero-foreground text-hero hover:bg-hero-foreground/90'
-                  : 'bg-primary text-primary-foreground hover:bg-primary/90'
-              )}
-            >
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm font-medium">
+                    {language === 'en' ? 'Properties' : 'Propriétés'}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-6">
+                      {propertyLinks.map((item) => (
+                        <li key={item.path}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              to={item.path}
+                              className={cn(
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group",
+                                location.pathname === item.path && 'bg-secondary text-primary'
+                              )}
+                            >
+                              <div className="text-sm font-medium leading-none mb-2">
+                                {item.label}
+                              </div>
+                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                {item.desc}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm font-medium">
+                    {language === 'en' ? 'Content' : 'Contenu'}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-6">
+                      {contentLinks.map((item) => (
+                        <li key={item.path}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              to={item.path}
+                              className={cn(
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                location.pathname === item.path && 'bg-secondary text-primary'
+                              )}
+                            >
+                              <div className="text-sm font-medium leading-none mb-2">
+                                {item.label}
+                              </div>
+                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                {item.desc}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link
+                    to="/about"
+                    className={cn(
+                      "group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:text-primary",
+                      location.pathname === '/about' ? 'text-primary' : 'text-foreground'
+                    )}
+                  >
+                    {t('nav.about')}
+                  </Link>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            <Button asChild variant="default" size="sm" className="ml-2">
               <Link to="/contact">{t('nav.contact')}</Link>
             </Button>
 
@@ -141,22 +160,22 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
-              className="gap-2 ml-1"
+              className="gap-2 ml-2"
             >
-              <Globe className="h-4 w-4" aria-hidden="true" />
+              <Globe className="h-4 w-4" />
               <span className="uppercase font-medium">{language}</span>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-3 lg:hidden">
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
               className="gap-1.5"
             >
-              <Globe className="h-4 w-4" aria-hidden="true" />
+              <Globe className="h-4 w-4" />
               <span className="uppercase text-xs font-medium">{language}</span>
             </Button>
 
@@ -164,47 +183,90 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? t('nav.menuClose') : t('nav.menuOpen')}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-menu"
             >
-              {isMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div
-            id="mobile-menu"
-            className="lg:hidden pb-6 pt-2 animate-fade-up border-t border-border max-h-[calc(100dvh-5rem)] overflow-y-auto"
-          >
-            <ul className="flex flex-col gap-1">
-              {links.map((item) => (
-                <li key={item.to}>
-                  <Link
-                    to={item.to}
-                    onClick={() => setIsMenuOpen(false)}
-                    aria-current={isActive(item.to) ? 'page' : undefined}
-                    className={cn(
-                      'block px-4 py-3 text-base font-medium rounded-sm transition-colors duration-200',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                      isActive(item.to)
-                        ? 'text-foreground bg-secondary shadow-[inset_3px_0_0_hsl(var(--accent))]'
-                        : 'text-foreground hover:bg-secondary/60'
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <Button asChild className="w-full mt-4 bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                {t('nav.contact')}
+          <div className="lg:hidden pb-6 pt-2 animate-fade-in border-t border-border mt-2">
+            <div className="flex flex-col space-y-1">
+              <Link
+                to="/"
+                onClick={() => setIsMenuOpen(false)}
+                className={cn(
+                  "px-4 py-3 text-sm font-medium transition-colors rounded-md",
+                  location.pathname === '/' 
+                    ? 'text-primary bg-secondary' 
+                    : 'text-foreground hover:text-primary hover:bg-secondary/50'
+                )}
+              >
+                {t('nav.home')}
               </Link>
-            </Button>
+
+              <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                {language === 'en' ? 'Properties' : 'Propriétés'}
+              </div>
+              {propertyLinks.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={cn(
+                    "px-4 py-3 text-sm font-medium transition-colors rounded-md",
+                    location.pathname === item.path
+                      ? 'text-primary bg-secondary'
+                      : 'text-foreground hover:text-primary hover:bg-secondary/50'
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider mt-2">
+                {language === 'en' ? 'Content' : 'Contenu'}
+              </div>
+              {contentLinks.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={cn(
+                    "px-4 py-3 text-sm font-medium transition-colors rounded-md",
+                    location.pathname === item.path
+                      ? 'text-primary bg-secondary'
+                      : 'text-foreground hover:text-primary hover:bg-secondary/50'
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              <Link
+                to="/about"
+                onClick={() => setIsMenuOpen(false)}
+                className={cn(
+                  "px-4 py-3 text-sm font-medium transition-colors rounded-md mt-2",
+                  location.pathname === '/about'
+                    ? 'text-primary bg-secondary'
+                    : 'text-foreground hover:text-primary hover:bg-secondary/50'
+                )}
+              >
+                {t('nav.about')}
+              </Link>
+
+              <Link
+                to="/contact"
+                onClick={() => setIsMenuOpen(false)}
+                className="mt-4 mx-4"
+              >
+                <Button className="w-full" size="sm">
+                  {t('nav.contact')}
+                </Button>
+              </Link>
+            </div>
           </div>
         )}
       </div>

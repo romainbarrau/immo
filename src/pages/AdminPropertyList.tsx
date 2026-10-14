@@ -75,7 +75,7 @@ const AdminPropertyList = () => {
         <div className="container mx-auto px-4 md:px-8 lg:px-12">
           <div className="flex flex-col gap-4 mb-8">
             <div className="flex justify-between items-center">
-              <h1 className="text-3xl text-foreground font-serif">Gérer les propriétés</h1>
+              <h1 className="text-3xl font-bold text-foreground">Gérer les propriétés</h1>
               <Button onClick={() => navigate('/admin/create')}>
                 <Plus className="w-4 h-4 mr-2" />
                 Nouvelle propriété
@@ -122,7 +122,7 @@ const AdminPropertyList = () => {
                   </div>
                   <CardContent className="pt-4">
                     <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-lg font-sans font-medium">{property.title_fr}</h3>
+                      <h3 className="font-semibold text-lg">{property.title_fr}</h3>
                       {getStatusBadge(property.status)}
                     </div>
                     <p className="text-sm text-muted-foreground mb-2">{property.location_fr}</p>
