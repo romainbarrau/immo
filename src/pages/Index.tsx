@@ -1,4 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
+import Bio from '@/components/Bio';
 import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import Navigation from '@/components/Navigation';
@@ -49,17 +50,17 @@ const Index = () => {
         <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 flex-1 flex items-center relative z-10">
           <div className="w-full relative">
             {/* Mobile: Center Content */}
-            <div className="md:hidden text-center text-white z-10 relative space-y-8">
+            <div className="md:hidden text-center text-foreground z-10 relative space-y-8">
               <div className="space-y-3">
-                <h1 className="text-5xl font-display font-bold leading-tight">
+                <h1 className="text-5xl font-display font-medium leading-tight">
                   Romain Barrau
                 </h1>
-                <p className="text-lg text-white/80 font-light tracking-wider uppercase">
-                  {language === 'en' ? 'Real Estate' : 'Immobilier'}
+                <p className="text-sm text-muted-foreground font-sans font-medium uppercase tracking-widest">
+                  {language === 'en' ? 'Real Estate' : 'Immobilier à Bordeaux'}
                 </p>
               </div>
               
-              <p className="text-xl opacity-90 font-light leading-relaxed">
+              <p className="!mt-5 text-xl opacity-90 font-light leading-relaxed">
                 {t('home.hero.title1')} <span className="italic font-serif">{t('home.hero.title2')}</span>{t('home.hero.title3')}
                 <br />
                 {t('home.hero.title4')} <span className="italic font-serif">{t('home.hero.title5')}</span>{t('home.hero.title6')}
@@ -68,25 +69,10 @@ const Index = () => {
                 <Button size="lg" className="mt-6 bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground" onClick={() => window.location.href = `${import.meta.env.BASE_URL}contact`}>
                   {t('home.hero.cta')}
                 </Button>
+                <p className="!mt-6 font-sans text-sm text-muted-foreground">{t('home.stats.line')}</p>
 
               <div className="relative pt-8">
                 <div className="relative h-[400px] flex items-end justify-center">
-                  {/* Floating Bubble 1 - Mobile */}
-                  <div className="absolute top-0 left-4 z-20 animate-float-1">
-                    <div className="bg-background/95 backdrop-blur-sm rounded-full px-4 py-3 shadow-2xl border-2 border-foreground/20">
-                      <p className="text-foreground font-bold text-lg whitespace-nowrap">11{'\u00A0'}M€</p>
-                      <p className="text-foreground/80 text-xs whitespace-nowrap">{t('home.stats.transactions')}</p>
-                    </div>
-                  </div>
-                  
-                  {/* Floating Bubble 2 - Mobile */}
-                  <div className="absolute bottom-4 right-4 z-20 animate-float-2">
-                    <div className="bg-background/95 backdrop-blur-sm rounded-full px-4 py-3 shadow-2xl border-2 border-foreground/20">
-                      <p className="text-foreground font-bold text-lg whitespace-nowrap">50+</p>
-                      <p className="text-foreground/80 text-xs whitespace-nowrap">{t('home.stats.clients')}</p>
-                    </div>
-                  </div>
-
                   <img 
                     src={romainHero} 
                     alt="Romain Barrau - Real Estate Agent" 
@@ -99,17 +85,17 @@ const Index = () => {
             {/* Desktop: Split Layout */}
             <div className="hidden md:grid md:grid-cols-2 md:gap-12 lg:gap-16 items-center">
               {/* Left: Text Content */}
-              <div className="text-white space-y-8">
+              <div className="text-foreground space-y-8">
                 <div className="space-y-3">
-                  <h1 className="text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-tight">
+                  <h1 className="text-5xl lg:text-6xl xl:text-7xl font-display font-medium leading-tight">
                     Romain Barrau
                   </h1>
-                  <p className="text-xl text-white/80 font-light tracking-wider uppercase">
-                    {language === 'en' ? 'Real Estate' : 'Immobilier'}
+                  <p className="text-sm text-muted-foreground font-sans font-medium uppercase tracking-widest">
+                    {language === 'en' ? 'Real Estate' : 'Immobilier à Bordeaux'}
                   </p>
                 </div>
                 
-                <p className="text-2xl lg:text-3xl opacity-90 font-light leading-relaxed">
+                <p className="!mt-5 text-2xl lg:text-3xl opacity-90 font-light leading-relaxed">
                   {t('home.hero.title1')} <span className="italic font-serif">{t('home.hero.title2')}</span>{t('home.hero.title3')}
                   <br />
                   {t('home.hero.title4')} <span className="italic font-serif">{t('home.hero.title5')}</span>{t('home.hero.title6')}
@@ -118,26 +104,11 @@ const Index = () => {
               <Button size="lg" className="mt-6 bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground" onClick={() => window.location.href = `${import.meta.env.BASE_URL}contact`}>
                 {t('home.hero.cta')}
               </Button>
+              <p className="!mt-6 font-sans text-sm text-muted-foreground">{t('home.stats.line')}</p>
               </div>
 
-              {/* Right: Image with Floating Bubbles */}
+              {/* Right: Image */}
               <div className="relative h-[650px] lg:h-[750px] xl:h-[800px] flex items-end justify-center">
-                {/* Floating Bubble 1 - Top Left of Image */}
-                <div className="absolute top-24 left-8 lg:left-16 z-20 animate-float-1">
-                  <div className="bg-background/95 backdrop-blur-sm rounded-full px-6 py-4 lg:px-8 lg:py-6 shadow-2xl border-2 border-foreground/20">
-                    <p className="text-foreground font-bold text-xl lg:text-2xl whitespace-nowrap">11{'\u00A0'}M€</p>
-                    <p className="text-foreground/80 text-xs lg:text-sm whitespace-nowrap">{t('home.stats.transactions')}</p>
-                  </div>
-                </div>
-                
-                {/* Floating Bubble 2 - Bottom Right of Image */}
-                <div className="absolute bottom-8 right-0 z-20 animate-float-2">
-                  <div className="bg-background/95 backdrop-blur-sm rounded-full px-6 py-4 lg:px-8 lg:py-6 shadow-2xl border-2 border-foreground/20">
-                    <p className="text-foreground font-bold text-xl lg:text-2xl whitespace-nowrap">50+</p>
-                    <p className="text-foreground/80 text-xs lg:text-sm whitespace-nowrap">{t('home.stats.clients')}</p>
-                  </div>
-                </div>
-
                 <img 
                   src={romainHero} 
                   alt="Romain Barrau - Real Estate Agent" 
@@ -190,11 +161,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Video Section */}
-      <VideoSection />
+      {/* Bio */}
+      <Bio />
 
       {/* Properties Carousel */}
       <PropertiesCarousel />
+
+      {/* Video Section */}
+      <VideoSection />
 
       {/* CTA Buttons Section */}
       

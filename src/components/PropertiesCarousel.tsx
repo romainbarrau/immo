@@ -45,7 +45,7 @@ const PropertiesCarousel = () => {
       <div className="container mx-auto max-w-7xl">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl md:text-4xl font-display text-foreground">
-            {language === 'en' ? 'Featured Properties' : 'Propriétés en Vedette'}
+            {language === 'en' ? 'Properties' : 'Propriétés'}
           </h2>
           <Button 
             variant="ghost" 

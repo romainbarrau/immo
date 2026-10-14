@@ -12,6 +12,8 @@ const translations = {
   fr: {
     // Navigation
     'nav.home': 'Accueil',
+    'nav.properties': 'Propriétés',
+    'nav.content': 'Contenu',
     'nav.listings': 'Biens en vente',
     'nav.sold': 'Biens vendus',
     'nav.videos': 'Vidéos',
@@ -28,7 +30,7 @@ const translations = {
     'home.hero.title4': 'L\'énergie d\'un',
     'home.hero.title5': 'entrepreneur',
     'home.hero.title6': '.',
-    'home.hero.cta': 'Contacte-moi',
+    'home.hero.cta': 'Contactez-moi',
     'home.dream.title': 'L\'expérience d\'un',
     'home.dream.agent': 'agent',
     'home.dream.title2': 'L\'énergie d\'un',
@@ -94,6 +96,7 @@ const translations = {
     'about.title': 'À propos',
     'about.content': "Je suis Romain Barrau, conseiller immobilier chez IAD France, le réseau de conseillers immobiliers indépendants.\n\nDe retour à Bordeaux, j’aide les familles et les investisseurs à naviguer dans l’immobilier en toute confiance, en combinant réflexion stratégique, créativité et passion.\n\nJe suis passionné par l’immobilier car il va bien au-delà des briques et des chiffres : il crée stabilité, confort et sens dans la vie des gens. Mon objectif est d’être un partenaire actif dans la réalisation des projets de mes clients.\n\nOriginaire de France, j’ai étudié et vécu à Bordeaux avant de travailler au Royaume-Uni, à Hong Kong, à Amsterdam, à Paris, puis à Lisbonne. Ce parcours international me donne une vision globale et une perspective unique, que je mets aujourd’hui au service du marché bordelais.",
     'about.timeline.title': 'Parcours',
+    'bio.content': "De retour à Bordeaux, où j'ai étudié et vécu, j'aide les familles et les investisseurs à vendre ou acheter en toute confiance, à Bordeaux ou à distance.\n\nAvant cela, j'ai travaillé au Royaume-Uni, à Hong Kong, à Amsterdam, à Paris, puis à Lisbonne. Ce parcours international me donne une vision globale que je mets aujourd'hui au service du marché bordelais.\n\nL'immobilier va bien au-delà des briques et des chiffres : il crée stabilité, confort et sens dans la vie des gens. Mon objectif est d'être un partenaire actif dans la réalisation de vos projets.",
     
     // Contact
     'contact.title': 'Contact',
@@ -106,9 +109,10 @@ const translations = {
     
     // Footer
     'footer.tagline': 'Conseiller immobilier',
-    'brand.subtitle': 'Immobilier',
+    'brand.subtitle': 'Immobilier à Bordeaux',
     'home.stats.transactions': 'de transactions',
     'home.stats.clients': 'clients accompagnés',
+    'home.stats.line': '11\u00A0M€ de biens vendus · 50 clients accompagnés',
     'videos.concepts': 'Concepts immobiliers',
     'contact.getInTouch': 'Me joindre',
     'contact.followMe': 'Me suivre',
@@ -142,6 +146,8 @@ const translations = {
   en: {
     // Navigation
     'nav.home': 'Home',
+    'nav.properties': 'Properties',
+    'nav.content': 'Content',
     'nav.listings': 'Listings',
     'nav.sold': 'Sold Properties',
     'nav.videos': 'Videos',
@@ -224,6 +230,7 @@ const translations = {
     'about.title': 'About',
     'about.content': "I'm Romain Barrau, Real Estate advisor at IAD France, the network of independent real estate advisors.\n\nNow back in Bordeaux, I help families and investors navigate real estate with confidence, combining strategic thinking, creativity, and passion.\n\nI'm passionate about real estate because it goes far beyond bricks and numbers—it creates stability, comfort, and meaning in people's lives. My goal is to be an active partner in making my clients' projects come true.\n\nOriginally from France, I studied and lived in Bordeaux before working in the UK, Hong Kong, Amsterdam, Paris, and then Lisbon. This international path gives me a global mindset and a unique perspective, which I now put at the service of the Bordeaux market.",
     'about.timeline.title': 'Timeline',
+    'bio.content': "Back in Bordeaux, where I studied and lived, I help families and investors sell or buy with confidence, in Bordeaux or remotely.\n\nBefore that, I worked in the UK, Hong Kong, Amsterdam, Paris, and then Lisbon. This international path gives me a global perspective that I now put at the service of the Bordeaux market.\n\nReal estate goes far beyond bricks and numbers: it creates stability, comfort, and meaning in people's lives. My goal is to be an active partner in making your projects happen.",
     
     // Contact
     'contact.title': 'Contact',
@@ -239,6 +246,7 @@ const translations = {
     'brand.subtitle': 'Real Estate',
     'home.stats.transactions': 'in transactions',
     'home.stats.clients': 'satisfied clients',
+    'home.stats.line': '€11M in property sold · 50 clients supported',
     'videos.concepts': 'Property Concepts',
     'contact.getInTouch': 'Get in Touch',
     'contact.followMe': 'Follow Me',

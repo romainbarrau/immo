@@ -9,36 +9,36 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Premium neutral color palette - inspired by modern minimalist architecture */
-    --background: 215 60% 12%;
-    --foreground: 0 0% 95%;
+    --background: 38 33% 95%; /* #F7F4EF */
+    --foreground: 36 10% 10%; /* #1C1A17 */
 
-    --card: 215 60% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 38 33% 95%;
+    --card-foreground: 36 10% 10%;
 
-    --popover: 215 60% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 38 33% 95%;
+    --popover-foreground: 36 10% 10%;
 
-    --primary: 0 0% 20%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 219 63% 12%; /* #0B1830 accent */
+    --primary-foreground: 38 33% 95%;
 
     --secondary: 40 15% 92%;
     --secondary-foreground: 0 0% 20%;
 
-    --shirt-blue: 215 45% 62%;
-    --shirt-blue-foreground: 0 0% 100%;
+    --shirt-blue: 219 63% 12%;
+    --shirt-blue-foreground: 38 33% 95%;
 
     --muted: 40 10% 94%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 37 6% 39%; /* #6B665E */
 
-    --accent: 210 20% 85%;
-    --accent-foreground: 0 0% 20%;
+    --accent: 219 63% 12%;
+    --accent-foreground: 38 33% 95%;
 
     --destructive: 0 50% 50%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 40 10% 88%;
     --input: 40 10% 88%;
-    --ring: 0 0% 20%;
+    --ring: 219 63% 12%;
 
     --radius: 0.5rem;
 
@@ -49,7 +49,7 @@ All colors MUST be HSL.
     --charcoal: 0 0% 20%;
     --ivory: 40 20% 97%;
     --deep-blue: 210 45% 38%;
-    --hero-dark-blue: 215 60% 12%;
+    --hero-dark-blue: 38 33% 95%; /* hero background, now light */
 
     /* Subtle gradients */
     --gradient-soft: linear-gradient(180deg, hsl(40 20% 97%) 0%, hsl(40 15% 94%) 100%);
@@ -107,7 +107,7 @@ All colors MUST be HSL.
     @apply bg-background text-foreground font-body;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3 {
     @apply font-display;
   }
 
