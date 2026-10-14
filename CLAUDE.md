@@ -6,7 +6,9 @@
   https://romainbarrau.github.io/immo/.
 - Seules adaptations : sous-chemin `/immo/` (`base` Vite,
   `basename` du routeur, liens `window.location.href`), `404.html` de repli,
-  script `npm run deploy` (build local + push de `dist/` sur `gh-pages`).
+  script `npm run deploy` (build local + push de `dist/` sur `gh-pages`, puis
+  publication par le workflow GitHub Actions `scripts/pages-workflow/deploy-pages.yml`
+  copié dans `gh-pages`).
 - Correctifs : lien des cartes du carrousel (`/listings/:id`) ; edge function
   `contact-form` envoie les messages par e-mail via Resend (secrets Supabase
   `RESEND_API_KEY`, `CONTACT_TO_EMAIL` = romain.barrau@iadfrance.fr), déployée sur

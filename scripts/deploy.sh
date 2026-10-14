@@ -6,6 +6,8 @@ cd "$(dirname "$0")/.."
 npm run build
 cp dist/index.html dist/404.html   # SPA fallback for deep links
 touch dist/.nojekyll
+mkdir -p dist/.github/workflows
+cp scripts/pages-workflow/deploy-pages.yml dist/.github/workflows/
 REMOTE=$(git remote get-url origin)
 cd dist
 rm -rf .git
