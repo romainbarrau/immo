@@ -1,6 +1,6 @@
 #!/bin/sh
 # Build the site with the Supabase values from .env.local and publish dist/
-# to the gh-pages branch (served at https://pierrestang.github.io/romainbarrau-site/).
+# to the gh-pages branch (served at https://romainbarrau.github.io/romainbarrau-site/).
 set -e
 cd "$(dirname "$0")/.."
 npm run build
@@ -15,4 +15,4 @@ git -c user.name="$(git -C .. config user.name || echo deploy)" -c user.email="$
   commit -q -m "Deploy $(git -C .. rev-parse --short HEAD)"
 git push -q -f "$REMOTE" gh-pages
 rm -rf .git
-echo "Publié : https://pierrestang.github.io/romainbarrau-site/"
+echo "Publié : https://romainbarrau.github.io/romainbarrau-site/"

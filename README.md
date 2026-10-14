@@ -2,7 +2,7 @@
 
 Site vitrine de Romain Barrau, conseiller immobilier à Lisbonne et Bordeaux.
 
-En ligne : https://pierrestang.github.io/romainbarrau-site/
+En ligne : https://romainbarrau.github.io/romainbarrau-site/
 
 ## Stack
 Vite + React 18 + TypeScript + Tailwind + shadcn/ui + React Router + Supabase.
