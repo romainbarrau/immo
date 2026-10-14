@@ -105,6 +105,7 @@ const translations = {
     'contact.success': 'Message envoyé avec succès !',
     
     // Footer
+    'footer.tagline': 'Conseiller immobilier',
     'footer.rights': 'Tous droits réservés',
     'footer.designed': 'Conçu avec',
   },
@@ -204,6 +205,7 @@ const translations = {
     'contact.success': 'Message sent successfully!',
     
     // Footer
+    'footer.tagline': 'Real Estate Advisor',
     'footer.rights': 'All rights reserved',
     'footer.designed': 'Designed with',
   },

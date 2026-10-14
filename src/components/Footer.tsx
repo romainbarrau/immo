@@ -12,8 +12,8 @@ const Footer = () => {
           <div>
             <h3 className="text-2xl font-display font-bold mb-4 text-foreground">Romain Barrau</h3>
             <p className="text-foreground/80">
-              Real Estate Advisor<br />
-              Lisbon
+              {t('footer.tagline')}<br />
+              Bordeaux
             </p>
           </div>
 
