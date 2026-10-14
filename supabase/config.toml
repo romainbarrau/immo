@@ -1,0 +1,7 @@
+project_id = "ykwjqlehkvllkgdkenhr"
+
+[functions.contact-form]
+verify_jwt = false
+
+[functions.import-property]
+verify_jwt = false
