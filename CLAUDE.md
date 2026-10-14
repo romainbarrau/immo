@@ -1,10 +1,10 @@
 # Site Romain Barrau — conseiller immobilier
 
 ## État
-- Ce dépôt (`romainbarrau/romainbarrau-site`, public) reproduit à l'identique le
+- Ce dépôt (`romainbarrau/immo`, public) reproduit à l'identique le
   site d'origine Lovable (commit `b750dca`), publié sur GitHub Pages :
-  https://romainbarrau.github.io/romainbarrau-site/.
-- Seules adaptations : sous-chemin `/romainbarrau-site/` (`base` Vite,
+  https://romainbarrau.github.io/immo/.
+- Seules adaptations : sous-chemin `/immo/` (`base` Vite,
   `basename` du routeur, liens `window.location.href`), `404.html` de repli,
   script `npm run deploy` (build local + push de `dist/` sur `gh-pages`).
 - Correctifs : lien des cartes du carrousel (`/listings/:id`) ; edge function

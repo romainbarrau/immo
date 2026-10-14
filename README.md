@@ -3,7 +3,7 @@
 Site vitrine de Romain Barrau, conseiller immobilier à Lisbonne et Bordeaux,
 identique au site d'origine créé avec Lovable.
 
-En ligne : https://romainbarrau.github.io/romainbarrau-site/
+En ligne : https://romainbarrau.github.io/immo/
 
 ## Développement
 ```sh

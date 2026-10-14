@@ -5,8 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Served from https://romainbarrau.github.io/romainbarrau-site/
-  base: mode === "production" ? "/romainbarrau-site/" : "/",
+  // Served from https://romainbarrau.github.io/immo/
+  base: mode === "production" ? "/immo/" : "/",
   server: {
     host: "::",
     port: 8080,
