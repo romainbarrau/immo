@@ -3,11 +3,11 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { MapPin, Home, Bed, Bath, Square, ArrowLeft, Loader2, Trees } from 'lucide-react';
+import { Home, ArrowLeft, Loader2 } from 'lucide-react';
 import { useProperty } from '@/hooks/useProperties';
 import ImageGallery from '@/components/ImageGallery';
 import { ReactNode } from 'react';
+import { splitTitle, placeOf } from '@/lib/propertyText';
 
 // Lines starting with "- " become a real bulleted list; other lines stay as text
 const descriptionBlocks = (text: string | null | undefined) => {
@@ -78,6 +78,19 @@ const ListingDetail = () => {
         <Footer />
       </div>;
   }
+  const fr = language === 'fr';
+  const title = fr ? property.title_fr : property.title_en;
+  const location = fr ? property.location_fr : property.location_en;
+  const m2 = (n: number) => `${n.toLocaleString('fr-FR')}\u00A0m²`;
+  const label = (n: number, one: string, many: string) => (n === 1 ? one : many);
+  // Value and label of each known characteristic (bedrooms, bathrooms, area, land)
+  const facts = [
+    property.bedrooms ? { value: String(property.bedrooms), label: label(property.bedrooms, fr ? 'Chambre' : 'Bedroom', fr ? 'Chambres' : 'Bedrooms') } : null,
+    property.bathrooms ? { value: String(property.bathrooms), label: label(property.bathrooms, fr ? 'Salle de bain' : 'Bathroom', fr ? 'Salles de bain' : 'Bathrooms') } : null,
+    property.area_m2 ? { value: m2(property.area_m2), label: fr ? 'Surface' : 'Area' } : null,
+    property.land_area_m2 ? { value: m2(property.land_area_m2), label: fr ? 'Terrain' : 'Land' } : null,
+  ].filter(Boolean) as { value: string; label: string }[];
+
   return <div className="min-h-screen">
       <Navigation />
       
@@ -101,66 +114,44 @@ const ListingDetail = () => {
                 </p>
               </div>
             )}
+            {/* Desktop: WhatsApp button under the photos, on the left (on mobile it stays after the description) */}
+            {!isSold && (
+              <Button asChild size="lg" className="mt-6 hidden lg:inline-flex bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground">
+                <a href="https://wa.me/33669119336?text=Bonjour%20Romain" target="_blank" rel="noopener noreferrer">
+                  {language === 'fr' ? 'Écrire sur WhatsApp' : 'Message on WhatsApp'}
+                </a>
+              </Button>
+            )}
           </div>
 
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">
-                {language === 'fr' ? 'Réf.' : 'Ref.'} {property.reference}
-              </p>
-              <h1 className="text-3xl font-display font-medium text-foreground">
-                {language === 'fr' ? property.title_fr : property.title_en}
-              </h1>
-              <div className="flex items-center text-foreground/80">
-                <MapPin className="h-5 w-5 mr-2" />
-                <span className="text-base">{language === 'fr' ? property.location_fr : property.location_en}</span>
-              </div>
-            </div>
+          <div>
+            <h1 className="text-3xl md:text-4xl font-display font-normal text-foreground">
+              {splitTitle(title).type}
+            </h1>
+            <p className="mt-2 text-base text-[#6B665E]">{placeOf(title, location)}</p>
 
-            <div className="flex items-center gap-3 text-foreground font-medium text-2xl">
+            <div className="mt-2 flex items-center gap-3 text-xl font-normal text-[#1C1A17]">
                 <span>{property.price.toLocaleString('fr-FR')}{'\u00A0'}€</span>
                 {isSold && (
-                  <span className="rounded-sm bg-primary px-2 py-1 text-xs font-normal uppercase tracking-wide text-primary-foreground">
+                  <span className="rounded-sm bg-primary px-2 py-1 text-sm font-display font-normal leading-none text-primary-foreground">
                     {t('sold.label')}
                   </span>
                 )}
             </div>
 
-            <Card className="w-full p-5">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {property.bedrooms && <div className="flex flex-col items-center">
-                    <Bed className="h-5 w-5 mb-2 text-foreground" />
-                    <span className="text-base font-medium text-foreground">{property.bedrooms}</span>
-                    <span className="text-sm text-muted-foreground">
-                      {language === 'fr' ? 'Chambres' : 'Bedrooms'}
-                    </span>
-                  </div>}
-                {property.bathrooms && <div className="flex flex-col items-center">
-                    <Bath className="h-5 w-5 mb-2 text-foreground" />
-                    <span className="text-base font-medium text-foreground">{property.bathrooms}</span>
-                    <span className="text-sm text-muted-foreground">
-                      {language === 'fr' ? 'Salles de bain' : 'Bathrooms'}
-                    </span>
-                  </div>}
-                {property.area_m2 && <div className="flex flex-col items-center">
-                    <Square className="h-5 w-5 mb-2 text-foreground" />
-                    <span className="text-base font-medium text-foreground">{property.area_m2} m²</span>
-                    <span className="text-sm text-muted-foreground">
-                      {language === 'fr' ? 'Surface' : 'Area'}
-                    </span>
-                  </div>}
-                {property.land_area_m2 ? <div className="flex flex-col items-center">
-                    <Trees className="h-5 w-5 mb-2 text-foreground" />
-                    <span className="text-base font-medium text-foreground">{property.land_area_m2.toLocaleString('fr-FR')} m²</span>
-                    <span className="text-sm text-muted-foreground">
-                      {language === 'fr' ? 'Terrain' : 'Land'}
-                    </span>
-                  </div> : null}
+            {facts.length > 0 && (
+              <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-6">
+                {facts.map((fact) => (
+                  <div key={fact.label}>
+                    <p className="text-lg font-normal text-[#1C1A17]">{fact.value}</p>
+                    <p className="text-xs text-[#6B665E]">{fact.label}</p>
+                  </div>
+                ))}
               </div>
-            </Card>
+            )}
 
-            {(property.description_fr || property.description_en) && <div>
-                <h3 className="text-xl font-display font-medium mb-3 text-foreground">
+            {(property.description_fr || property.description_en) && <div className="mt-6">
+                <h3 className="mb-4 font-display font-normal text-xl text-[#1C1A17]">
                   {language === 'fr' ? 'Description' : 'Description'}
                 </h3>
                 <div className="space-y-3 text-base text-foreground/90 leading-relaxed">
@@ -168,7 +159,7 @@ const ListingDetail = () => {
                 </div>
               </div>}
 
-            {property.characteristics && Object.keys(property.characteristics).length > 0 && <div>
+            {property.characteristics && Object.keys(property.characteristics).length > 0 && <div className="mt-6">
                 <h2 className="text-2xl font-display font-semibold mb-3 text-foreground">
                   {language === 'fr' ? 'Caractéristiques' : 'Features'}
                 </h2>
@@ -181,7 +172,7 @@ const ListingDetail = () => {
               </div>}
 
             {!isSold && (
-              <Button asChild size="lg" className="bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground">
+              <Button asChild size="lg" className="mt-6 lg:hidden bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground">
                 <a href="https://wa.me/33669119336?text=Bonjour%20Romain" target="_blank" rel="noopener noreferrer">
                   {language === 'fr' ? 'Écrire sur WhatsApp' : 'Message on WhatsApp'}
                 </a>

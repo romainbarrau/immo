@@ -1,5 +1,4 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import PropertyCard from '@/components/PropertyCard';
@@ -8,7 +7,6 @@ import { Loader2 } from 'lucide-react';
 
 const SoldProperties = () => {
   const { t, language } = useLanguage();
-  const navigate = useNavigate();
   const { data: soldProperties, isLoading } = useProperties('sold');
 
   return (
@@ -43,7 +41,7 @@ const SoldProperties = () => {
                   location={language === 'fr' ? property.location_fr : property.location_en}
                   price={property.price.toLocaleString('fr-FR')}
                   sold={true}
-                  onClick={() => navigate(`/listings/${property.id}`)}
+                  to={`/listings/${property.id}`}
                 />
               </div>
             ))}

@@ -4,7 +4,9 @@ import { Star, ChevronDown, ChevronUp } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
 import { useEffect, useRef, useState } from 'react';
-import Autoplay from 'embla-carousel-autoplay';
+
+// Carousel arrows: icon only, 44px touch area, same centre as the former 32px circles
+const ARROW = 'h-11 w-11 border-0 bg-transparent shadow-none text-[#6B665E] hover:bg-transparent hover:text-[#1C1A17] [&_svg]:size-5';
 
 const TestimonialsCarousel = () => {
   const { t, language } = useLanguage();
@@ -34,6 +36,8 @@ const TestimonialsCarousel = () => {
     return () => observer.disconnect();
   }, [language, expandedId]);
 
+  // Display order: reviews naming Romain without the agency first, then those naming
+  // Romain and the agency, then the one that doesn't name him
   const testimonials = [
     { id: 2, name: 'Jessica Mendes Pedro', rating: 5, url: 'https://share.google/OJ8K3zlbiKyMnx4Ps' },
     { id: 3, name: 'Jean Sulzer', rating: 5, url: 'https://share.google/s16RPU0zvmKXBexEX' },
@@ -43,8 +47,8 @@ const TestimonialsCarousel = () => {
     { id: 1, name: 'Nikita Godart', rating: 5, url: 'https://share.google/z4qb8oCGVZCiSvMkN' },
     { id: 5, name: 'Charles Hector Whitmee', rating: 5, url: 'https://share.google/6hauXzWBdFdivkww1' },
     { id: 6, name: 'Diogo Castillo Leitão', rating: 5, url: 'https://share.google/GrJlHakrOz3aqfBUj' },
-    { id: 9, name: 'Adriana Darling', rating: 5, url: 'https://share.google/62X0KAIDMtj8ziaKW' },
     { id: 10, name: 'Jose Mexia de Almeida', rating: 5, url: 'https://share.google/Zt9yAMi3pGn1BLjl8' },
+    { id: 9, name: 'Adriana Darling', rating: 5, url: 'https://share.google/62X0KAIDMtj8ziaKW' },
   ];
 
   return (
@@ -66,15 +70,10 @@ const TestimonialsCarousel = () => {
 
         <Carousel
           opts={{
-            align: 'center',
+            // start on the first review (centered, the last one showed on its left)
+            align: 'start',
             loop: true,
           }}
-          plugins={[
-            Autoplay({
-              delay: 5000,
-              stopOnInteraction: true,
-            }),
-          ]}
           className="w-full"
         >
           <CarouselContent className="-ml-4 md:-ml-6">
@@ -131,8 +130,8 @@ const TestimonialsCarousel = () => {
               );
             })}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex -left-12" />
-          <CarouselNext className="hidden md:flex -right-12" />
+          <CarouselPrevious variant="ghost" className={`${ARROW} hidden md:flex -left-[54px]`} />
+          <CarouselNext variant="ghost" className={`${ARROW} hidden md:flex -right-[54px]`} />
         </Carousel>
 
         <p className="md:hidden text-center text-xs md:text-sm text-muted-foreground mt-8 md:mt-12">

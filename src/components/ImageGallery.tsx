@@ -1,14 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Carousel, CarouselApi, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+
+// Arrows on the main photo: icon only, 44px touch area, light with a shadow to stay readable on any photo
+const PHOTO_ARROW =
+  'absolute top-1/2 -translate-y-1/2 z-10 flex h-11 w-11 items-center justify-center text-white/90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] transition-colors hover:text-white disabled:opacity-0';
 
 interface ImageGalleryProps {
   images: Array<{ id: string; image_url: string }>;
@@ -17,6 +15,14 @@ interface ImageGalleryProps {
 
 const ImageGallery = ({ images, altText }: ImageGalleryProps) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  // photo shown in the main frame; the arrows on it step through the photos
+  const [current, setCurrent] = useState(0);
+  const [thumbsApi, setThumbsApi] = useState<CarouselApi>();
+
+  // keep the current photo's thumbnail in view
+  useEffect(() => {
+    thumbsApi?.scrollTo(current);
+  }, [thumbsApi, current]);
 
   const openLightbox = (index: number) => {
     setSelectedImageIndex(index);
@@ -52,11 +58,11 @@ const ImageGallery = ({ images, altText }: ImageGalleryProps) => {
         {/* Main image */}
         <div 
           className="relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group"
-          onClick={() => openLightbox(0)}
+          onClick={() => openLightbox(current)}
         >
           <img
-            src={images[0].image_url}
-            alt={`${altText} 1`}
+            src={images[current].image_url}
+            alt={`${altText} ${current + 1}`}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300 flex items-center justify-center">
@@ -64,11 +70,39 @@ const ImageGallery = ({ images, altText }: ImageGalleryProps) => {
               Cliquer pour agrandir
             </span>
           </div>
+          {images.length > 1 && (
+            <>
+              <button
+                type="button"
+                aria-label="Photo précédente"
+                className={`${PHOTO_ARROW} left-2`}
+                disabled={current === 0}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrent((i) => Math.max(0, i - 1));
+                }}
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                aria-label="Photo suivante"
+                className={`${PHOTO_ARROW} right-2`}
+                disabled={current === images.length - 1}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrent((i) => Math.min(images.length - 1, i + 1));
+                }}
+              >
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </>
+          )}
         </div>
 
         {/* Thumbnail carousel */}
         {images.length > 1 && (
-          <Carousel className="w-full">
+          <Carousel setApi={setThumbsApi} opts={{ align: 'start', containScroll: 'trimSnaps' }} className="w-full">
             <CarouselContent className="-ml-2">
               {images.map((img, idx) => (
                 <CarouselItem key={img.id} className="pl-2 basis-1/2 md:basis-1/4">
@@ -86,11 +120,6 @@ const ImageGallery = ({ images, altText }: ImageGalleryProps) => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            {/* Arrows below the thumbnails, aligned right */}
-            <div className="mt-3 flex justify-end gap-2">
-              <CarouselPrevious className="static h-8 w-8 translate-y-0" />
-              <CarouselNext className="static h-8 w-8 translate-y-0" />
-            </div>
           </Carousel>
         )}
       </div>

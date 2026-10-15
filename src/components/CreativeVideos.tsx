@@ -13,6 +13,9 @@ import {
 } from '@/components/ui/carousel';
 import { propertyConceptVideos, renovationSeries } from '@/data/videos';
 
+// Carousel arrows: icon only, 44px touch area, same centre as the former 32px circles
+const ARROW = 'h-11 w-11 border-0 bg-transparent shadow-none text-[#6B665E] hover:bg-transparent hover:text-[#1C1A17] [&_svg]:size-5';
+
 // The Renovation Series first, in place of the first property concept
 const VIDEOS = [...renovationSeries.slice(0, 1), ...propertyConceptVideos.slice(1, 4)];
 
@@ -110,12 +113,12 @@ const CreativeVideos = () => {
             })}
           </CarouselContent>
           {/* Desktop: arrows outside the video, vertically centred */}
-          <CarouselPrevious className="hidden md:flex -left-12" />
-          <CarouselNext className="hidden md:flex -right-12" />
+          <CarouselPrevious variant="ghost" className={`${ARROW} hidden md:flex -left-[54px]`} />
+          <CarouselNext variant="ghost" className={`${ARROW} hidden md:flex -right-[54px]`} />
           {/* Mobile: arrows below the video, side by side */}
-          <div className="mt-4 flex justify-center gap-3 md:hidden">
-            <CarouselPrevious className="static translate-y-0" />
-            <CarouselNext className="static translate-y-0" />
+          <div className="mt-[10px] flex justify-center gap-0 md:hidden">
+            <CarouselPrevious variant="ghost" className={`${ARROW} static translate-y-0`} />
+            <CarouselNext variant="ghost" className={`${ARROW} static translate-y-0`} />
           </div>
         </Carousel>
 

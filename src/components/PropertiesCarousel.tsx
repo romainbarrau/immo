@@ -13,6 +13,9 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
+// Carousel arrows: icon only, 44px touch area, same centre as the former 32px circles
+const ARROW = 'h-11 w-11 border-0 bg-transparent shadow-none text-[#6B665E] hover:bg-transparent hover:text-[#1C1A17] [&_svg]:size-5';
+
 const PropertiesCarousel = () => {
   const { t, language } = useLanguage();
   const { data: properties, isLoading } = useProperties('available');
@@ -71,13 +74,13 @@ const PropertiesCarousel = () => {
                   location={language === 'en' ? property.location_en : property.location_fr}
                   price={new Intl.NumberFormat('fr-FR').format(property.price)}
                   sold={property.status === 'sold'}
-                  onClick={() => window.location.href = `${import.meta.env.BASE_URL}listings/${property.id}`}
+                  to={`/listings/${property.id}`}
                 />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex -left-12" />
-          <CarouselNext className="hidden md:flex -right-12" />
+          <CarouselPrevious variant="ghost" className={`${ARROW} hidden md:flex -left-[54px]`} />
+          <CarouselNext variant="ghost" className={`${ARROW} hidden md:flex -right-[54px]`} />
         </Carousel>
 
         {/* same button as "Voir mes films" in CreativeVideos */}

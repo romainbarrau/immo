@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -10,12 +9,11 @@ const WHATSAPP_URL = 'https://wa.me/33669119336';
 
 const Listings = () => {
   const { t, language } = useLanguage();
-  const navigate = useNavigate();
   const { data: forSale, isLoading: loadingForSale } = useProperties('available');
   const { data: sold, isLoading: loadingSold } = useProperties('sold');
 
   const renderGrid = (properties: Property[], soldLabel: boolean) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
       {properties.map((property, index) => (
         <div
           key={property.id}
@@ -28,7 +26,7 @@ const Listings = () => {
             location={language === 'fr' ? property.location_fr : property.location_en}
             price={property.price.toLocaleString('fr-FR')}
             soldLabel={soldLabel}
-            onClick={() => navigate(`/listings/${property.id}`)}
+            to={`/listings/${property.id}`}
           />
         </div>
       ))}
