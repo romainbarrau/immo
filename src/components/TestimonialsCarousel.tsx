@@ -48,7 +48,7 @@ const TestimonialsCarousel = () => {
   ];
 
   return (
-    <section className="py-8 md:py-12 bg-background">
+    <section className="py-20 md:py-24 bg-[#F3EFE8]">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-medium text-foreground">
@@ -82,7 +82,7 @@ const TestimonialsCarousel = () => {
               const isExpanded = expandedId === testimonial.id;
               return (
                 <CarouselItem key={testimonial.id} className="pl-4 md:pl-6 basis-[90%] sm:basis-[80%] md:basis-1/2 lg:basis-1/3">
-                  <Card className="p-6 h-full bg-background/60 border-foreground/20 hover:border-foreground/40 hover:shadow-xl transition-all duration-300 flex flex-col">
+                  <Card className="p-6 h-full border border-[#E8E3DA] bg-white shadow-none flex flex-col">
                     <div className="flex gap-1 mb-4 md:mb-6">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} className="h-4 w-4 fill-accent-warm text-accent-warm" />
@@ -98,7 +98,7 @@ const TestimonialsCarousel = () => {
                       </p>
                     </div>
 
-                    <div className="mt-auto border-t border-border/40">
+                    <div className="mt-auto">
                       <p className="mt-4 font-medium text-foreground text-base">
                         {testimonial.name}
                       </p>

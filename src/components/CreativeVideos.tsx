@@ -39,7 +39,7 @@ const CreativeVideos = () => {
   }, [api]);
 
   return (
-    <section className="py-8 md:py-12 px-4 md:px-8 lg:px-12 bg-background">
+    <section className="py-20 md:py-24 px-4 md:px-8 lg:px-12 bg-background">
       <div className="container mx-auto max-w-7xl">
         <div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display leading-tight mb-6 text-foreground">
@@ -64,7 +64,7 @@ const CreativeVideos = () => {
               const startParam = video.start ? `&start=${video.start}` : '';
               return (
                 <CarouselItem key={video.id}>
-                  <div className="relative aspect-video overflow-hidden rounded-[2rem] bg-muted">
+                  <div className="relative aspect-video overflow-hidden rounded-lg bg-muted">
                     {isPlaying ? (
                       <iframe
                         className="absolute inset-0 h-full w-full"

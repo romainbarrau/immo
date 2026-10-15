@@ -104,7 +104,7 @@ const Index = () => {
       {/* Call to action */}
       <ContactCta />
 
-      <Footer />
+      <Footer flush />
     </div>;
 };
 export default Index;

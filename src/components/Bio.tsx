@@ -7,7 +7,7 @@ const Bio = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 md:py-32 bg-background">
+    <section className="py-20 md:py-24 bg-[#F3EFE8]">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20">
           <div className="relative rounded-lg overflow-hidden shadow-lg aspect-[4/5]">

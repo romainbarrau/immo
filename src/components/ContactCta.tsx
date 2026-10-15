@@ -6,7 +6,7 @@ const ContactCta = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="bg-background py-20 md:py-28 px-4">
+    <section className="bg-[#F3EFE8] py-20 md:py-24 px-4">
       <div className="container mx-auto max-w-3xl text-center">
         <h2 className="text-3xl md:text-4xl font-display font-medium text-foreground">
           {t('cta.title')}

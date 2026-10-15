@@ -19,7 +19,7 @@ const PropertiesCarousel = () => {
 
   if (isLoading) {
     return (
-      <section className="py-12 px-4 md:px-8 lg:px-12 bg-background">
+      <section className="py-20 md:py-24 px-4 md:px-8 lg:px-12 bg-background">
         <div className="container mx-auto max-w-7xl">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl md:text-4xl font-display font-medium text-foreground">
@@ -41,7 +41,7 @@ const PropertiesCarousel = () => {
   }
 
   return (
-    <section className="py-8 md:py-12 px-4 md:px-8 lg:px-12 bg-background">
+    <section className="py-20 md:py-24 px-4 md:px-8 lg:px-12 bg-background">
       <div className="container mx-auto max-w-7xl">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl md:text-4xl font-display font-medium text-foreground">
