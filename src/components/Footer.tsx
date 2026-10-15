@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -24,8 +23,18 @@ const Footer = () => {
             <div className="space-y-2 text-foreground/80">
               <p>romain.barrau@iadfrance.fr</p>
               <p>
-                <a href="tel:+33669119336" className="hover:text-foreground transition-colors">
+                <a href="tel:+33669119336" className="block font-sans text-muted-foreground hover:underline underline-offset-4">
                   +33 6 69 11 93 36
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://wa.me/33669119336?text=Bonjour%20Romain"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block font-sans text-muted-foreground hover:underline underline-offset-4"
+                >
+                  WhatsApp
                 </a>
               </p>
             </div>
@@ -34,36 +43,22 @@ const Footer = () => {
           {/* Social Links */}
           <div>
             <h4 className="font-display font-semibold mb-4 text-foreground">{t('footer.follow')}</h4>
-            <div className="flex space-x-4">
-              <a
-                href="https://wa.me/33669119336"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground/80 hover:text-foreground transition-colors"
-              >
-                <MessageCircle className="h-5 w-5" />
-              </a>
+            <div className="space-y-2">
               <a
                 href="https://instagram.com/romainbarrau"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground/80 hover:text-foreground transition-colors"
+                className="block font-sans text-muted-foreground hover:underline underline-offset-4"
               >
-                <Instagram className="h-5 w-5" />
+                Instagram
               </a>
               <a
                 href="https://www.linkedin.com/in/romain-barrau-213607110"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground/80 hover:text-foreground transition-colors"
+                className="block font-sans text-muted-foreground hover:underline underline-offset-4"
               >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="mailto:romain.barrau@iadfrance.fr"
-                className="text-foreground/80 hover:text-foreground transition-colors"
-              >
-                <Mail className="h-5 w-5" />
+                LinkedIn
               </a>
             </div>
           </div>

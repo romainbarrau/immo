@@ -18,19 +18,19 @@ All colors MUST be HSL.
     --popover: 40 37.5% 96.9%;
     --popover-foreground: 36 10% 10%;
 
-    --primary: 219 63% 12%; /* #0B1830 accent */
+    --primary: 18.8 56.2% 41.2%; /* #A4532E terracotta accent */
     --primary-foreground: 40 37.5% 96.9%;
 
     --secondary: 40 15% 92%;
     --secondary-foreground: 0 0% 20%;
 
-    --shirt-blue: 219 63% 12%;
+    --shirt-blue: 18.8 56.2% 41.2%;
     --shirt-blue-foreground: 40 37.5% 96.9%;
 
     --muted: 40 10% 94%;
     --muted-foreground: 37 6% 39%; /* #6B665E */
 
-    --accent: 219 63% 12%;
+    --accent: 18.8 56.2% 41.2%;
     --accent-foreground: 40 37.5% 96.9%;
 
     --accent-warm: 19 52% 47%; /* #B8623A, small details only */
@@ -40,7 +40,7 @@ All colors MUST be HSL.
 
     --border: 40 10% 88%;
     --input: 40 10% 88%;
-    --ring: 219 63% 12%;
+    --ring: 18.8 56.2% 41.2%;
 
     --radius: 0.5rem;
 
@@ -111,6 +111,11 @@ All colors MUST be HSL.
 
   h1, h2, h3 {
     @apply font-display;
+  }
+
+  /* DM Serif Display only exists in weight 400: never fake a bold version */
+  h1, h2, h3, h4, .font-display, .font-serif {
+    font-synthesis-weight: none;
   }
 
   .animate-fade-in {

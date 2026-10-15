@@ -35,14 +35,14 @@ const TestimonialsCarousel = () => {
   }, [language, expandedId]);
 
   const testimonials = [
-    { id: 1, name: 'Nikita Godart', rating: 5, url: 'https://share.google/z4qb8oCGVZCiSvMkN' },
     { id: 2, name: 'Jessica Mendes Pedro', rating: 5, url: 'https://share.google/OJ8K3zlbiKyMnx4Ps' },
     { id: 3, name: 'Jean Sulzer', rating: 5, url: 'https://share.google/s16RPU0zvmKXBexEX' },
     { id: 4, name: 'Chanseau Tara', rating: 5, url: 'https://share.google/GbPxupAp3MN4RaMfn' },
-    { id: 5, name: 'Charles Hector Whitmee', rating: 5, url: 'https://share.google/6hauXzWBdFdivkww1' },
-    { id: 6, name: 'Diogo Castillo Leitão', rating: 5, url: 'https://share.google/GrJlHakrOz3aqfBUj' },
     { id: 7, name: 'Patricia Remacha', rating: 5, url: 'https://share.google/wKDVz45jN78hsh4ZI' },
     { id: 8, name: 'Nguyen Christian', rating: 5, url: 'https://share.google/qwUjarLM83ucjsWPJ' },
+    { id: 1, name: 'Nikita Godart', rating: 5, url: 'https://share.google/z4qb8oCGVZCiSvMkN' },
+    { id: 5, name: 'Charles Hector Whitmee', rating: 5, url: 'https://share.google/6hauXzWBdFdivkww1' },
+    { id: 6, name: 'Diogo Castillo Leitão', rating: 5, url: 'https://share.google/GrJlHakrOz3aqfBUj' },
     { id: 9, name: 'Adriana Darling', rating: 5, url: 'https://share.google/62X0KAIDMtj8ziaKW' },
     { id: 10, name: 'Jose Mexia de Almeida', rating: 5, url: 'https://share.google/Zt9yAMi3pGn1BLjl8' },
   ];

@@ -9,7 +9,7 @@ const Bio = () => {
   return (
     <section className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20">
           <div className="relative rounded-lg overflow-hidden shadow-lg aspect-[4/5]">
             {/* Blurred background */}
             <img
@@ -26,13 +26,18 @@ const Bio = () => {
               className="absolute z-10 object-contain w-[108%] bottom-0 left-1/2 -translate-x-1/2"
             />
           </div>
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center max-w-prose">
             <h2 className="font-display font-medium text-3xl md:text-4xl text-foreground mb-6">
               {t('bio.title')}
             </h2>
             <div className="space-y-6 font-sans text-base leading-relaxed text-foreground">
               {t('bio.content').split('\n\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+                <p
+                  key={index}
+                  className={index === 0 ? 'text-lg md:text-xl text-foreground' : 'text-base text-muted-foreground'}
+                >
+                  {paragraph}
+                </p>
               ))}
             </div>
           </div>

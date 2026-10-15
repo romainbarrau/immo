@@ -42,8 +42,8 @@ const translations = {
     'home.inclusions.title': 'Mon univers',
     'home.inclusions.creative': 'créatif',
     'home.inclusions.title2': '',
-    'home.inclusions.description1': 'Nous racontons des histoires de maisons, de villes et de rêves à travers le film.',
-    'home.inclusions.description2': 'Chaque vidéo est conçue pour inspirer, connecter et donner vie à notre vision de l\'immobilier.',
+    'home.inclusions.description1': 'Je raconte des histoires de maisons, de villes et de rêves à travers le film.',
+    'home.inclusions.description2': 'Chaque vidéo est conçue pour inspirer, connecter et donner vie à ma vision de l\'immobilier.',
     'home.inclusions.cta': 'Voir mes films',
     'home.cta.properties': 'Propriétés',
     'home.cta.reviews': 'Avis',
@@ -104,8 +104,8 @@ const translations = {
     'about.title': 'À propos',
     'about.content': "Je suis Romain Barrau, conseiller immobilier chez IAD France, le réseau de conseillers immobiliers indépendants.\n\nDe retour à Bordeaux, j’aide les familles et les investisseurs à naviguer dans l’immobilier en toute confiance, en combinant réflexion stratégique, créativité et passion.\n\nJe suis passionné par l’immobilier car il va bien au-delà des briques et des chiffres : il crée stabilité, confort et sens dans la vie des gens. Mon objectif est d’être un partenaire actif dans la réalisation des projets de mes clients.\n\nOriginaire de France, j’ai étudié et vécu à Bordeaux avant de travailler au Royaume-Uni, à Hong Kong, à Amsterdam, à Paris, puis à Lisbonne. Ce parcours international me donne une vision globale et une perspective unique, que je mets aujourd’hui au service du marché bordelais.",
     'about.timeline.title': 'Parcours',
-    'bio.title': 'Un retour à Bordeaux',
-    'bio.content': "J’ai étudié et vécu ici avant de partir, et j’y reviens aujourd’hui pour accompagner familles et investisseurs dans leur vente ou leur achat, sur place ou à distance.\n\nFormé entre le Royaume-Uni, Hong Kong et Amsterdam, j’ai ensuite exercé à Lisbonne, où j’ai vendu pendant plusieurs années pour une clientèle internationale. Ce parcours m’a appris à lire un marché avec recul, et à comprendre ce que cherchent vraiment ceux qui achètent de loin.\n\nL’immobilier va bien au-delà des briques et des chiffres : il apporte stabilité, confort et sens dans une vie. Mon rôle est d’être un partenaire actif, du premier échange jusqu’à la remise des clés.",
+    'bio.title': 'De Lisbonne à Bordeaux',
+    'bio.content': "J’ai étudié et vécu ici. J’y reviens aujourd’hui pour accompagner familles et investisseurs dans leur vente ou leur achat, qu’ils soient sur place ou à distance.\n\nMon expérience, je l’ai construite à Lisbonne, où j’ai vendu pendant plusieurs années pour des clients du monde entier. On y apprend vite l’essentiel : estimer juste, dire les choses, et rester présent du premier échange jusqu’aux clés.\n\nJe ne crois pas que l’immobilier soit une affaire de mètres carrés. C’est un moment de vie, et je veux être le partenaire sur qui vous pouvez compter à ce moment‑là.",
     
     // Contact
     'contact.title': 'Contact',
@@ -117,6 +117,8 @@ const translations = {
     'contact.success': 'Message envoyé avec succès !',
     
     // Footer
+    'cta.title': 'Un projet à Bordeaux\u00A0?',
+    'cta.subtitle': 'Parlons-en simplement.',
     'footer.tagline': 'Conseiller immobilier',
     'brand.subtitle': 'Immobilier à Bordeaux',
     'home.stats.transactions': 'de transactions',
@@ -188,8 +190,8 @@ const translations = {
     'home.inclusions.title': 'My',
     'home.inclusions.creative': 'creative',
     'home.inclusions.title2': 'universe',
-    'home.inclusions.description1': 'We tell stories of homes, cities, and dreams through film.',
-    'home.inclusions.description2': 'Each video is crafted to inspire, connect, and bring our vision of real estate to life.',
+    'home.inclusions.description1': 'I tell stories of homes, cities, and dreams through film.',
+    'home.inclusions.description2': 'Each video is crafted to inspire, connect, and bring my vision of real estate to life.',
     'home.inclusions.cta': 'View my films',
     'home.cta.properties': 'Properties',
     'home.cta.reviews': 'Reviews',
@@ -250,8 +252,8 @@ const translations = {
     'about.title': 'About',
     'about.content': "I'm Romain Barrau, Real Estate advisor at IAD France, the network of independent real estate advisors.\n\nNow back in Bordeaux, I help families and investors navigate real estate with confidence, combining strategic thinking, creativity, and passion.\n\nI'm passionate about real estate because it goes far beyond bricks and numbers—it creates stability, comfort, and meaning in people's lives. My goal is to be an active partner in making my clients' projects come true.\n\nOriginally from France, I studied and lived in Bordeaux before working in the UK, Hong Kong, Amsterdam, Paris, and then Lisbon. This international path gives me a global mindset and a unique perspective, which I now put at the service of the Bordeaux market.",
     'about.timeline.title': 'Timeline',
-    'bio.title': 'Back to Bordeaux',
-    'bio.content': "I studied and lived here before leaving, and I am coming back today to help families and investors sell or buy, locally or from abroad.\n\nTrained in the UK, Hong Kong and Amsterdam, I then worked in Lisbon, where I sold property for several years to an international clientele. This path taught me to read a market with perspective, and to understand what people buying from afar are really looking for.\n\nReal estate goes far beyond bricks and numbers: it brings stability, comfort and meaning to a life. My role is to be an active partner, from the first conversation to the handover of the keys.",
+    'bio.title': 'From Lisbon to Bordeaux',
+    'bio.content': "I studied and lived here. I am coming back today to help families and investors sell or buy, whether they are here or far away.\n\nI built my experience in Lisbon, where I sold property for several years to clients from all over the world. You quickly learn what matters there: price things right, say things as they are, and stay present from the first conversation to the keys.\n\nI don’t believe real estate is a matter of square metres. It is a moment in life, and I want to be the partner you can count on at that moment.",
     
     // Contact
     'contact.title': 'Contact',
@@ -263,6 +265,8 @@ const translations = {
     'contact.success': 'Message sent successfully!',
     
     // Footer
+    'cta.title': 'A project in Bordeaux?',
+    'cta.subtitle': "Let's simply talk about it.",
     'footer.tagline': 'Real Estate Advisor',
     'brand.subtitle': 'Real Estate',
     'home.stats.transactions': 'in transactions',

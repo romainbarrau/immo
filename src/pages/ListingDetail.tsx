@@ -17,7 +17,7 @@ const descriptionBlocks = (text: string | null | undefined) => {
   let lines: string[] = [];
   const flushItems = () => {
     if (items.length) blocks.push(
-      <ul key={blocks.length} className="list-disc pl-5 space-y-1">
+      <ul key={blocks.length} className="list-disc pl-5 space-y-2">
         {items.map((item, i) => <li key={i}>{item}</li>)}
       </ul>
     );
@@ -87,8 +87,8 @@ const ListingDetail = () => {
           {language === 'fr' ? 'Retour aux biens' : 'Back to properties'}
         </Button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-12 items-start mb-12">
+          <div className="lg:sticky lg:top-24">
             {galleryImages.length > 0 ? (
               <ImageGallery 
                 images={galleryImages}

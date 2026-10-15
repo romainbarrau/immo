@@ -1,12 +1,13 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import Bio from '@/components/Bio';
+import ContactCta from '@/components/ContactCta';
+import CreativeVideos from '@/components/CreativeVideos';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import PropertiesCarousel from '@/components/PropertiesCarousel';
 import romainHero from '@/assets/romain-hero.png';
-import creativeInterior from '@/assets/creative-interior.jpg';
 const Index = () => {
   const { t, language } = useLanguage();
 
@@ -28,10 +29,10 @@ const Index = () => {
                 </p>
               </div>
               
-              <p className="!mt-5 text-xl opacity-90 font-light leading-relaxed">
-                {t('home.hero.title1')} <span className="font-semibold">{t('home.hero.title2')}</span>{t('home.hero.title3')}
+              <p className="!mt-5 text-xl opacity-90 font-normal leading-relaxed">
+                {t('home.hero.title1')} {t('home.hero.title2')}{t('home.hero.title3')}
                 <br />
-                {t('home.hero.title4')} <span className="font-semibold">{t('home.hero.title5')}</span>{t('home.hero.title6')}
+                {t('home.hero.title4')} {t('home.hero.title5')}{t('home.hero.title6')}
               </p>
 
                 <Button asChild size="lg" className="mt-6 bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground">
@@ -63,10 +64,10 @@ const Index = () => {
                   </p>
                 </div>
                 
-                <p className="!mt-5 text-2xl lg:text-3xl opacity-90 font-light leading-relaxed">
-                  {t('home.hero.title1')} <span className="font-semibold">{t('home.hero.title2')}</span>{t('home.hero.title3')}
+                <p className="!mt-5 text-2xl lg:text-3xl opacity-90 font-normal leading-relaxed">
+                  {t('home.hero.title1')} {t('home.hero.title2')}{t('home.hero.title3')}
                   <br />
-                  {t('home.hero.title4')} <span className="font-semibold">{t('home.hero.title5')}</span>{t('home.hero.title6')}
+                  {t('home.hero.title4')} {t('home.hero.title5')}{t('home.hero.title6')}
                 </p>
 
               <Button asChild size="lg" className="mt-6 bg-shirt-blue hover:bg-shirt-blue/90 text-shirt-blue-foreground">
@@ -88,43 +89,20 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Bio */}
-      <Bio />
-
       {/* Testimonials Section */}
       <TestimonialsCarousel />
 
       {/* Properties Carousel */}
       <PropertiesCarousel />
 
-      {/* Inclusions Section */}
-      <section className="py-8 md:py-12 px-4 md:px-8 lg:px-12 bg-background">
-        <div className="container mx-auto max-w-7xl">
-          <div className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden min-h-[500px] md:min-h-[600px] shadow-2xl">
-            {/* Background Image */}
-            <div className="absolute inset-0">
-              <img src={creativeInterior} alt="Creative interior space" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-black/60"></div>
-            </div>
+      {/* Bio */}
+      <Bio />
 
-            {/* Content */}
-            <div className="relative z-10 p-8 md:p-12 lg:p-16 text-white h-full flex flex-col justify-center max-w-2xl">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display leading-tight mb-6">
-                {t('home.inclusions.title')} <span className="italic font-serif">{t('home.inclusions.creative')}</span>{language === 'en' && ` ${t('home.inclusions.title2')}`}
-              </h2>
-              <p className="text-lg md:text-xl mb-4 leading-relaxed opacity-90">
-                {t('home.inclusions.description1')}
-              </p>
-              <p className="text-lg md:text-xl mb-8 leading-relaxed opacity-90">
-                {t('home.inclusions.description2')}
-              </p>
-              <Button size="lg" className="w-fit bg-background hover:bg-background/90 text-primary" onClick={() => window.location.href = `${import.meta.env.BASE_URL}videos`}>
-                {t('home.inclusions.cta')}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Creative universe: video carousel */}
+      <CreativeVideos />
+
+      {/* Call to action */}
+      <ContactCta />
 
       <Footer />
     </div>;

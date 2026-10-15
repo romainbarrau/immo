@@ -73,7 +73,7 @@ const ImageGallery = ({ images, altText }: ImageGalleryProps) => {
               {images.map((img, idx) => (
                 <CarouselItem key={img.id} className="pl-2 basis-1/2 md:basis-1/4">
                   <div
-                    className="relative h-20 overflow-hidden rounded-lg cursor-pointer group"
+                    className="relative h-24 overflow-hidden rounded-lg cursor-pointer group"
                     onClick={() => openLightbox(idx)}
                   >
                     <img
@@ -86,21 +86,29 @@ const ImageGallery = ({ images, altText }: ImageGalleryProps) => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-2" />
-            <CarouselNext className="right-2" />
+            {/* Arrows below the thumbnails, aligned right */}
+            <div className="mt-3 flex justify-end gap-2">
+              <CarouselPrevious className="static h-8 w-8 translate-y-0" />
+              <CarouselNext className="static h-8 w-8 translate-y-0" />
+            </div>
           </Carousel>
         )}
       </div>
 
       {/* Lightbox dialog */}
       <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && closeLightbox()}>
-        <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background/95 backdrop-blur">
+        <DialogContent
+          className="max-w-[95vw] max-h-[95vh] p-0 bg-background/95 backdrop-blur [&>button:last-child]:hidden"
+          // hide the dialog's built-in close button (the gallery has its own) and don't focus it on open
+          onOpenAutoFocus={(e) => e.preventDefault()}
+        >
           <div className="relative w-full h-[95vh] flex items-center justify-center">
             <Button
               variant="ghost"
               size="icon"
               className="absolute top-4 right-4 z-50 text-foreground hover:bg-foreground/10"
               onClick={closeLightbox}
+              aria-label="Fermer"
             >
               <X className="h-6 w-6" />
             </Button>
