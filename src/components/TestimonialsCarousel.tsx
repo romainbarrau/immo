@@ -52,8 +52,9 @@ const TestimonialsCarousel = () => {
   ];
 
   return (
-    <section className="py-20 md:py-24 bg-[#F3EFE8]">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section className="py-20 md:py-24 px-4 md:px-8 lg:px-12 bg-[#F3EFE8]">
+      {/* same container as PropertiesCarousel */}
+      <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-medium text-foreground">
             {t('home.testimonials.title')}
