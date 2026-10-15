@@ -11,7 +11,7 @@ import {
 import Autoplay from 'embla-carousel-autoplay';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const PropertiesCarousel = () => {
   const { t, language } = useLanguage();
@@ -47,14 +47,6 @@ const PropertiesCarousel = () => {
           <h2 className="text-3xl md:text-4xl font-display font-medium text-foreground">
             {language === 'en' ? 'Properties for Sale' : 'Biens en vente'}
           </h2>
-          <Button 
-            variant="ghost" 
-            className="group text-accent-warm hover:text-accent-warm hover:bg-transparent"
-            onClick={() => window.location.href = `${import.meta.env.BASE_URL}listings`}
-          >
-            {language === 'en' ? 'View All' : 'Voir Tout'}
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
         </div>
         
         <Carousel
@@ -87,6 +79,11 @@ const PropertiesCarousel = () => {
           <CarouselPrevious className="hidden md:flex -left-12" />
           <CarouselNext className="hidden md:flex -right-12" />
         </Carousel>
+
+        {/* same button as "Voir mes films" in CreativeVideos */}
+        <Button asChild size="lg" className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Link to="/listings">{language === 'en' ? 'View the properties' : 'Voir les biens'}</Link>
+        </Button>
       </div>
     </section>
   );
